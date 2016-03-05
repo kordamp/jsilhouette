@@ -1,0 +1,37 @@
+apply from: rootProject.file('gradle/javafx.gradle')
+
+dependencies {
+    compileOnly project.files(project.jfxrtLocation)
+    testCompileOnly project.files(project.jfxrtLocation)
+}
+
+configurations {
+    asciidoclet
+}
+
+dependencies {
+    asciidoclet 'org.asciidoctor:asciidoclet:1.5.2'
+}
+
+evaluationDependsOn ':image-generator'
+
+task generateImages {
+    dependsOn project(':image-generator').run
+    doFirst {
+        file(javadoc.destinationDir).mkdirs()
+    }
+    doLast {
+        copy {
+            into file("${javadoc.destinationDir}/images")
+            from project(':image-generator').file('build/images')
+        }
+    }
+}
+
+javadoc {
+    dependsOn generateImages
+    options.docletpath = configurations.asciidoclet.files.asType(List)
+    options.doclet = 'org.asciidoctor.Asciidoclet'
+    options.addStringOption "-base-dir", "${projectDir}"
+    options.addStringOption "-attribute", "imagesdir=${javadoc.destinationDir}/images"
+}

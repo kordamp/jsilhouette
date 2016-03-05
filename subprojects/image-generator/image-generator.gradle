@@ -1,0 +1,8 @@
+apply from: rootProject.file('gradle/javafx.gradle')
+apply plugin: 'application'
+
+mainClassName = 'org.kordamp.jsilhouette.Generator'
+
+dependencies {
+    compile project(':jsilhouette-javafx')
+}

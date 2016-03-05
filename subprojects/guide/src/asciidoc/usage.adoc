@@ -1,0 +1,23 @@
+
+[[_usage]]
+= Usage
+
+== Installing
+
+[source,groovy]
+[subs="attributes"]
+.gradle
+----
+compile '{project-group}:jsilhouette-javafx:{project-version}'
+----
+
+[source,xml]
+[subs="attributes,verbatim"]
+.maven
+----
+<dependency>
+    <groupId>{project-group}</groupId>
+    <artifactId>jsilhouette-javafx</artifactId>
+    <version>{project-version}</version>
+</dependency>
+----

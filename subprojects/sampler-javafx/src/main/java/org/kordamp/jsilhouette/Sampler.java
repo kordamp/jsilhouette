@@ -1,0 +1,151 @@
+/*
+ * Copyright 2015-2016 Andres Almiray. <aalmiray@yahoo.com>
+ *
+ * This file is part of JSilhouette
+ *
+ * JSilhouette is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * JSilhouette is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with JSilhouette. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * ========================================================================
+ *
+ * This library is distributed under the terms of the GNU General Public
+ * License with the following clarification and special exception:
+ *
+ * Linking this library statically or dynamically with other modules is
+ * making a combined work based on this library. Thus, the terms and
+ * conditions of the GNU General Public License cover the whole
+ * combination.
+ *
+ * As an special exception, the copyright holders of this library give
+ * you permission to use this library under the terms of the Apache
+ * Software License v2 and forego the licensing terms of the GNU General
+ * Public License if and only if the library is used as part of an
+ * executable and/or application that makes use of the APIs of either the
+ * Griffon Framework (https://github.com/griffon/griffon) or the
+ * Basilisk Framework (https://github.com/basilisk-fw/basilisk).
+ *
+ * ========================================================================
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.kordamp.jsilhouette;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Shape;
+import javafx.stage.Stage;
+import org.kordamp.jsilhouette.javafx.Lauburu;
+import org.kordamp.jsilhouette.javafx.Rays;
+import org.kordamp.jsilhouette.javafx.Silhouette;
+
+import java.net.URL;
+
+/**
+ * @author Andres Almiray
+ */
+public class Sampler extends Application {
+    public static void main(String[] args) {
+        launch(Sampler.class);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        URL location = getClass().getResource("sampler.fxml");
+        FXMLLoader fxmlLoader = new FXMLLoader(location);
+
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(20, 20, 20, 20));
+        grid.setHgap(20);
+        grid.setVgap(20);
+
+        grid.add(new Lauburu(50, 50, 50).getShape(), 0, 0);
+
+        /*
+        grid.add(new Rays(50, 50, 50, 2, 0.5, true).getShape(), 0, 0);
+        grid.add(new Rays(50, 50, 50, 3, 0.5, true).getShape(), 1, 0);
+        grid.add(new Rays(50, 50, 50, 4, 0.5, true).getShape(), 2, 0);
+        grid.add(new Rays(50, 50, 50, 5, 0.5, true).getShape(), 3, 0);
+        grid.add(new Rays(50, 50, 50, 6, 0.5, true).getShape(), 4, 0);
+
+        grid.add(new Cross(50, 50, 50, 20, 0.5).getShape(), 0, 0);
+        grid.add(r(new Cross(50, 50, 50, 20, 0.5), 45), 1, 0);
+        grid.add(new Almond(50, 50, 50).getShape(), 2, 0);
+        grid.add(r(new Almond(50, 50, 50), 90), 3, 0);
+        grid.add(new Astroid(50, 50, 50).getShape(), 4, 0);
+
+        grid.add(new Asterisk(50, 50, 50, 20, 2, 0).getShape(), 0, 1);
+        grid.add(new Asterisk(50, 50, 50, 20, 3, 0).getShape(), 1, 1);
+        grid.add(new Asterisk(50, 50, 50, 20, 4, 0).getShape(), 2, 1);
+        grid.add(new Asterisk(50, 50, 50, 20, 5, 0).getShape(), 3, 1);
+        grid.add(new Asterisk(50, 50, 50, 20, 6, 0).getShape(), 4, 1);
+
+        grid.add(new Asterisk(50, 50, 50, 20, 2, 1).getShape(), 0, 2);
+        grid.add(new Asterisk(50, 50, 50, 20, 3, 1).getShape(), 1, 2);
+        grid.add(new Asterisk(50, 50, 50, 20, 4, 1).getShape(), 2, 2);
+        grid.add(new Asterisk(50, 50, 50, 20, 5, 1).getShape(), 3, 2);
+        grid.add(new Asterisk(50, 50, 50, 20, 6, 1).getShape(), 4, 2);
+
+        grid.add(new RoundPin(30, 30, 30).getShape(), 0, 3);
+        grid.add(new Arrow(0, 0, 100, 100).getShape(), 1, 3);
+        grid.add(r(new Arrow(0, 0, 100, 100), -90), 2, 3);
+        grid.add(new Arrow(0, 0, 100, 100, 0.1, 0.5).getShape(), 3, 3);
+        grid.add(new Arrow(0, 0, 100, 100, 0.5, 0.2).getShape(), 4, 3);
+
+        grid.add(new RegularPolygon(50, 50, 50, 3).getShape(), 0, 4);
+        grid.add(new RegularPolygon(50, 50, 50, 4).getShape(), 1, 4);
+        grid.add(new RegularPolygon(50, 50, 50, 5).getShape(), 2, 4);
+        grid.add(new RegularPolygon(50, 50, 50, 6).getShape(), 3, 4);
+        grid.add(new RegularPolygon(50, 50, 50, 7).getShape(), 4, 4);
+
+        grid.add(new Donut(50, 50, 50, 20, 3).getShape(), 0, 5);
+        grid.add(new Donut(50, 50, 50, 20, 4).getShape(), 1, 5);
+        grid.add(new Donut(50, 50, 50, 20, 5).getShape(), 2, 5);
+        grid.add(new Donut(50, 50, 50, 20, 6).getShape(), 3, 5);
+        grid.add(new Donut(50, 50, 50, 20, 7).getShape(), 4, 5);
+
+        // grid.add(new MultiRoundRectangle(0, 0, 100, 100, 51).getShape(), 0, 6);
+        grid.add(new Star(50, 50, 50, 20, 3).getShape(), 0, 6);
+        grid.add(new Star(50, 50, 50, 20, 4).getShape(), 1, 6);
+        grid.add(new Star(50, 50, 50, 20, 5).getShape(), 2, 6);
+        grid.add(new Star(50, 50, 50, 20, 6).getShape(), 3, 6);
+        grid.add(new Star(50, 50, 50, 20, 7).getShape(), 4, 6);
+        */
+
+        Scene scene = new Scene(grid);
+        scene.getStylesheets().add("org/kordamp/jsilhouette/sampler.css");
+
+        primaryStage.setTitle("JSilhouette Sampler");
+        primaryStage.setScene(scene);
+        primaryStage.setWidth(1024);
+        primaryStage.setHeight(1024);
+        primaryStage.show();
+    }
+
+    private Shape r(Silhouette silhouette, double rotate) {
+        silhouette.setRotate(rotate);
+        return silhouette.getShape();
+    }
+}

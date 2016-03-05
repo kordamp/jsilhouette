@@ -1,0 +1,172 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url 'http://dl.bintray.com/content/bmuschko/maven' }
+        maven { url 'http://dl.bintray.com/content/bmuschko/gradle-plugins' }
+    }
+
+    dependencies {
+        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.3'
+        classpath 'com.bmuschko:gradle-java2html-plugin:2.0'
+    }
+}
+
+apply plugin: 'org.asciidoctor.convert'
+apply plugin: 'com.bmuschko.java2html'
+
+ext.childProjects = [
+    ':jsilhouette-javafx'
+]
+
+childProjects.each { evaluationDependsOn it }
+evaluationDependsOn ':image-generator'
+
+task generateImages {
+    dependsOn project(':image-generator').run
+    doFirst {
+        file(javadoc.destinationDir).mkdirs()
+    }
+    doLast {
+        copy {
+            into file("${javadoc.destinationDir}/images")
+            from project(':image-generator').file('build/images')
+        }
+    }
+}
+
+configurations {
+    asciidoclet
+}
+
+dependencies {
+    asciidoclet 'org.asciidoctor:asciidoclet:1.5.2'
+    java2html 'de.java2html:java2html:5.0'
+}
+
+task copyDocs(type: Copy) {
+    destinationDir = "${buildDir}/sources" as File
+    project.ext.childProjects.each { projectName ->
+        from(project(projectName).sourceSets.main.allSource) {
+            include '**/*.java'
+            include '**/*.html'
+        }
+    }
+}
+
+task apiDocs(type: Javadoc, dependsOn: copyDocs) {
+    dependsOn generateImages
+    options.docletpath = configurations.asciidoclet.files.asType(List)
+    options.doclet     = 'org.asciidoctor.Asciidoclet'
+    options.addStringOption "-base-dir", "${projectDir}"
+    options.addStringOption "-attribute", "imagesdir=${javadoc.destinationDir}/images"
+
+    source          = copyDocs.destinationDir
+    destinationDir  = file("${buildDir}/api")
+    title           = "JSilhouette ${project.version}"
+    classpath       = project.ext.childProjects.collect { projectName ->
+                          [project(projectName).sourceSets.main.output,
+                           project(projectName).configurations.compile,
+                           project(projectName).configurations.compileOnly]
+                      }.flatten().sum() as FileCollection
+
+    excludes = ['**/*.html', 'META-INF/**']
+
+    options.use         = true
+    options.splitIndex  = true
+    options.encoding    = 'UTF-8'
+    options.author      = true
+    options.version     = true
+    options.source      = project.sourceCompatibility
+    options.overview    = file('src/javadoc/overview.html')
+    options.windowTitle = "JSilhouette ${project.version}"
+    options.docTitle    = "JSilhouette ${project.version}"
+    options.footer      = project.javadocFooter
+    options.links       = ['http://www.slf4j.org/apidocs/',
+                           'http://junit.org/javadoc/latest/',
+                           'http://docs.oracle.com/javase/8/docs/api/',
+                           'http://jsr-305.googlecode.com/svn/trunk/javadoc/',
+                           'http://atinject.googlecode.com/svn/trunk/javadoc/']
+}
+
+task generateJava2html {
+    dependsOn apiDocs
+    dependsOn "java2htmlGenerateOverview"
+    dependsOn java2htmlConvertCode
+}
+
+task javadocJar(type: Jar, dependsOn: apiDocs, overwrite: true) {
+    archiveName    = "jsilhouette-${version}-javadoc.jar"
+    destinationDir = "${buildDir}/assemble/jars" as File
+    from apiDocs.destinationDir
+}
+
+task sourceHtmlJar(type: Jar, dependsOn: java2html) {
+    archiveName    = "jsilhouette-${version}-sources-html.jar"
+    destinationDir = "${buildDir}/assemble/jars" as File
+    from java2htmlConvertCode.destDir
+}
+
+task docsJar(dependsOn: [javadocJar, sourceHtmlJar]) { }
+
+java2html {
+    conversion {
+        srcDirs = files(copyDocs.destinationDir)
+        tabs = 4
+        style = 'kawa'
+        addLineAnchors = true
+        showFileName = true
+        useShortFileName = true
+        overwrite = true
+        showDefaultTitle = true
+    }
+
+    overview {
+        windowTitle    = "JSilhouette ${project.version}"
+        docTitle       = "JSilhouette ${project.version}"
+        docDescription = "JSilhouette ${project.version}"
+        stylesheet     = file('src/javadoc/resources/css/stylesheet.css')
+    }
+}
+
+asciidoctor {
+    sourceDir = file('src/asciidoc')
+    attributes = [
+        toc                    : 'left',
+        doctype                : 'book',
+        icons                  : 'font',
+        encoding               : 'utf-8',
+        sectlink               : true,
+        sectanchors            : true,
+        numbered               : true,
+        linkattrs              : true,
+        imagesdir              : 'images',
+        linkcss                : true,
+        stylesheet             : 'css/style.css',
+        'source-highlighter'   : 'coderay',
+        'coderay-linenums-mode': 'table',
+        'project-title'        : project.project_description,
+        'project-author'       : 'Andres Almiray',
+        'project-url'          : project.project_url,
+        'project-vcs'          : project.project_scm,
+        'project-issue-tracker': project.project_issues,
+        'project-group'        : project.group
+    ]
+    sources {
+        include 'index.adoc'
+    }
+    resources {
+        from file('src/resources')
+    }
+}
+
+task guide(type: Copy, dependsOn: [apiDocs, generateJava2html, asciidoctor]) {
+    destinationDir = "${buildDir}/guide" as File
+    from(apiDocs.destinationDir)       { into 'api' }
+    from(java2htmlConvertCode.destDir) { into 'api-src'}
+    from("${asciidoctor.outputDir}/html5")
+}
+
+task guideZip(type: Zip, dependsOn: guide) {
+    baseName = "jsilhouette-guide"
+    from guide.destinationDir
+}
