@@ -65,144 +65,234 @@ import javafx.scene.shape.StrokeType;
  * @author Andres Almiray
  */
 public interface Silhouette {
-    Shape getShape();
+    default Shape getShape() {
+        return shapeProperty().get();
+    }
 
     ObjectProperty<Shape> shapeProperty();
 
-    Paint getFill();
+    default Paint getFill() {
+        return fillProperty().get();
+    }
 
     ObjectProperty<Paint> fillProperty();
 
-    void setFill(Paint fill);
+    default void setFill(Paint fill) {
+        fillProperty().set(fill);
+    }
 
-    boolean isSmooth();
+    default boolean isSmooth() {
+        return smoothProperty().get();
+    }
 
     BooleanProperty smoothProperty();
 
-    void setSmooth(boolean smooth);
+    default void setSmooth(boolean smooth) {
+        smoothProperty().set(smooth);
+    }
 
-    double getStrokeDashOffset();
+    default double getStrokeDashOffset() {
+        return strokeDashOffsetProperty().get();
+    }
 
     DoubleProperty strokeDashOffsetProperty();
 
-    void setStrokeDashOffset(double strokeDashOffset);
+    default void setStrokeDashOffset(double strokeDashOffset) {
+        strokeDashOffsetProperty().set(strokeDashOffset);
+    }
 
-    StrokeLineCap getStrokeLineCap();
+    default StrokeLineCap getStrokeLineCap() {
+        return strokeLineCapProperty().get();
+    }
 
     ObjectProperty<StrokeLineCap> strokeLineCapProperty();
 
-    void setStrokeLineCap(StrokeLineCap strokeLineCap);
+    default void setStrokeLineCap(StrokeLineCap strokeLineCap) {
+        strokeLineCapProperty().set(strokeLineCap);
+    }
 
-    StrokeLineJoin getStrokeLineJoin();
+    default StrokeLineJoin getStrokeLineJoin() {
+        return strokeLineJoinProperty().get();
+    }
 
     ObjectProperty<StrokeLineJoin> strokeLineJoinProperty();
 
-    void setStrokeLineJoin(StrokeLineJoin strokeLineJoin);
+    default void setStrokeLineJoin(StrokeLineJoin strokeLineJoin) {
+        strokeLineJoinProperty().set(strokeLineJoin);
+    }
 
-    double getStrokeMiterLimit();
+    default double getStrokeMiterLimit() {
+        return strokeMiterLimitProperty().get();
+    }
 
     DoubleProperty strokeMiterLimitProperty();
 
-    void setStrokeMiterLimit(double strokeMiterLimit);
+    default void setStrokeMiterLimit(double strokeMiterLimit) {
+        strokeMiterLimitProperty().set(strokeMiterLimit);
+    }
 
-    Paint getStroke();
+    default Paint getStroke() {
+        return strokeProperty().get();
+    }
 
     ObjectProperty<Paint> strokeProperty();
 
-    void setStroke(Paint stroke);
+    default void setStroke(Paint stroke) {
+        strokeProperty().set(stroke);
+    }
 
-    StrokeType getStrokeType();
+    default StrokeType getStrokeType() {
+        return strokeTypeProperty().get();
+    }
 
     ObjectProperty<StrokeType> strokeTypeProperty();
 
-    void setStrokeType(StrokeType strokeType);
+    default void setStrokeType(StrokeType strokeType) {
+        strokeTypeProperty().set(strokeType);
+    }
 
-    double getStrokeWidth();
+    default double getStrokeWidth() {
+        return strokeWidthProperty().get();
+    }
 
     DoubleProperty strokeWidthProperty();
 
-    void setStrokeWidth(double strokeWidth);
+    default void setStrokeWidth(double strokeWidth) {
+        strokeWidthProperty().set(strokeWidth);
+    }
 
     static double normalizeAngle(double angle) {
         angle = angle % 360;
         return angle < 0 ? angle + 360 : angle;
     }
 
-    String getId();
+    default String getId() {
+        return idProperty().get();
+    }
 
     StringProperty idProperty();
 
-    void setId(String id);
+    default void setId(String id) {
+        idProperty().set(id);
+    }
 
-    boolean isManaged();
+    default boolean isManaged() {
+        return managedProperty().get();
+    }
 
     BooleanProperty managedProperty();
 
-    void setManaged(boolean managed);
+    default void setManaged(boolean managed) {
+        managedProperty().set(managed);
+    }
 
-    double getOpacity();
+    default double getOpacity() {
+        return opacityProperty().get();
+    }
 
     DoubleProperty opacityProperty();
 
-    void setOpacity(double opacity);
+    default void setOpacity(double opacity) {
+        opacityProperty().set(opacity);
+    }
 
-    double getRotate();
+    default double getRotate() {
+        return rotateProperty().get();
+    }
 
     DoubleProperty rotateProperty();
 
-    void setRotate(double rotate);
+    default void setRotate(double rotate) {
+        rotateProperty().set(rotate);
+    }
 
-    Point3D getRotationAxis();
+    default Point3D getRotationAxis() {
+        return rotationAxisProperty().get();
+    }
 
     ObjectProperty<Point3D> rotationAxisProperty();
 
-    void setRotationAxis(Point3D rotationAxis);
+    default void setRotationAxis(Point3D rotationAxis) {
+        rotationAxisProperty().set(rotationAxis);
+    }
 
-    double getScaleX();
+    default double getScaleX() {
+        return scaleXProperty().get();
+    }
 
     DoubleProperty scaleXProperty();
 
-    void setScaleX(double scaleX);
+    default void setScaleX(double scaleX) {
+        scaleXProperty().set(scaleX);
+    }
 
-    double getScaleY();
+    default double getScaleY() {
+        return scaleYProperty().get();
+    }
 
     DoubleProperty scaleYProperty();
 
-    void setScaleY(double scaleY);
+    default void setScaleY(double scaleY) {
+        scaleYProperty().set(scaleY);
+    }
 
-    double getScaleZ();
+    default double getScaleZ() {
+        return scaleZProperty().get();
+    }
 
     DoubleProperty scaleZProperty();
 
-    void setScaleZ(double scaleZ);
+    default void setScaleZ(double scaleZ) {
+        scaleZProperty().set(scaleZ);
+    }
 
-    String getStyle();
+    default String getStyle() {
+        return styleProperty().get();
+    }
 
     StringProperty styleProperty();
 
-    void setStyle(String style);
+    default void setStyle(String style) {
+        styleProperty().set(style);
+    }
 
-    double getTranslateX();
+    default double getTranslateX() {
+        return translateXProperty().get();
+    }
 
     DoubleProperty translateXProperty();
 
-    void setTranslateX(double translateX);
+    default void setTranslateX(double translateX) {
+        translateXProperty().set(translateX);
+    }
 
-    double getTranslateY();
+    default double getTranslateY() {
+        return translateYProperty().get();
+    }
 
     DoubleProperty translateYProperty();
 
-    void setTranslateY(double translateY);
+    default void setTranslateY(double translateY) {
+        translateYProperty().set(translateY);
+    }
 
-    double getTranslateZ();
+    default double getTranslateZ() {
+        return translateZProperty().get();
+    }
 
     DoubleProperty translateZProperty();
 
-    void setTranslateZ(double translateZ);
+    default void setTranslateZ(double translateZ) {
+        translateZProperty().set(translateZ);
+    }
 
-    boolean isVisible();
+    default boolean isVisible() {
+        return visibleProperty().get();
+    }
 
     BooleanProperty visibleProperty();
 
-    void setVisible(boolean visible);
+    default void setVisible(boolean visible) {
+        visibleProperty().set(visible);
+    }
 }
