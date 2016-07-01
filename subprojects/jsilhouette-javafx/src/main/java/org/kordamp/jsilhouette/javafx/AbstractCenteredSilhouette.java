@@ -61,11 +61,6 @@ public abstract class AbstractCenteredSilhouette extends AbstractSilhouette impl
     private DoubleProperty centerY;
 
     @Override
-    public double getCenterX() {
-        return centerXProperty().get();
-    }
-
-    @Override
     @SuppressWarnings("unchecked")
     public DoubleProperty centerXProperty() {
         if (centerX == null) {
@@ -76,16 +71,6 @@ public abstract class AbstractCenteredSilhouette extends AbstractSilhouette impl
     }
 
     @Override
-    public void setCenterX(double value) {
-        centerXProperty().set(value);
-    }
-
-    @Override
-    public double getCenterY() {
-        return centerYProperty().get();
-    }
-
-    @Override
     @SuppressWarnings("unchecked")
     public DoubleProperty centerYProperty() {
         if (centerY == null) {
@@ -93,10 +78,5 @@ public abstract class AbstractCenteredSilhouette extends AbstractSilhouette impl
             centerY.addListener(updateListener);
         }
         return centerY;
-    }
-
-    @Override
-    public void setCenterY(double value) {
-        centerYProperty().set(value);
     }
 }

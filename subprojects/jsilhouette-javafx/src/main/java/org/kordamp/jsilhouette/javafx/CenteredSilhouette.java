@@ -56,13 +56,21 @@ import javafx.beans.property.DoubleProperty;
  * @author Andres Almiray
  */
 public interface CenteredSilhouette extends Silhouette {
-    double getCenterX();
+    default double getCenterX() {
+        return centerXProperty().get();
+    }
 
-    double getCenterY();
+    default double getCenterY() {
+        return centerYProperty().get();
+    }
 
-    void setCenterX(double value);
+    default void setCenterX(double value) {
+        centerXProperty().set(value);
+    }
 
-    void setCenterY(double value);
+    default void setCenterY(double value) {
+        centerYProperty().set(value);
+    }
 
     DoubleProperty centerXProperty();
 

@@ -113,11 +113,6 @@ public abstract class AbstractSilhouette implements Silhouette {
         }
     };
 
-    @Override
-    public Shape getShape() {
-        return shapeProperty().get();
-    }
-
     protected void setShape(Shape shape) {
         shapeProperty().set(shape);
     }
@@ -160,11 +155,6 @@ public abstract class AbstractSilhouette implements Silhouette {
     protected abstract void calculateShape();
 
     @Override
-    public Paint getFill() {
-        return fillProperty().get();
-    }
-
-    @Override
     public ObjectProperty<Paint> fillProperty() {
         if (fill == null) {
             fill = new SimpleObjectProperty<>(this, "fill", Color.BLACK);
@@ -174,32 +164,12 @@ public abstract class AbstractSilhouette implements Silhouette {
     }
 
     @Override
-    public void setFill(Paint fill) {
-        fillProperty().set(fill);
-    }
-
-    @Override
-    public boolean isSmooth() {
-        return smoothProperty().get();
-    }
-
-    @Override
     public BooleanProperty smoothProperty() {
         if (smooth == null) {
             smooth = new SimpleBooleanProperty(this, "smooth", true);
             smooth.addListener((v, o, n) -> forwardShapeProperty(s -> s.setSmooth(n)));
         }
         return smooth;
-    }
-
-    @Override
-    public void setSmooth(boolean smooth) {
-        smoothProperty().set(smooth);
-    }
-
-    @Override
-    public double getStrokeDashOffset() {
-        return strokeDashOffsetProperty().get();
     }
 
     @Override
@@ -218,16 +188,6 @@ public abstract class AbstractSilhouette implements Silhouette {
     }
 
     @Override
-    public void setStrokeDashOffset(double strokeDashOffset) {
-        strokeDashOffsetProperty().set(strokeDashOffset);
-    }
-
-    @Override
-    public StrokeLineCap getStrokeLineCap() {
-        return strokeLineCapProperty().get();
-    }
-
-    @Override
     public ObjectProperty<StrokeLineCap> strokeLineCapProperty() {
         if (strokeLineCap == null) {
             strokeLineCap = new SimpleObjectProperty<>(this, "strokeLineCap", DEFAULT_STROKE_LINE_CAP);
@@ -237,32 +197,12 @@ public abstract class AbstractSilhouette implements Silhouette {
     }
 
     @Override
-    public void setStrokeLineCap(StrokeLineCap strokeLineCap) {
-        strokeLineCapProperty().set(strokeLineCap);
-    }
-
-    @Override
-    public StrokeLineJoin getStrokeLineJoin() {
-        return strokeLineJoinProperty().get();
-    }
-
-    @Override
     public ObjectProperty<StrokeLineJoin> strokeLineJoinProperty() {
         if (strokeLineJoin == null) {
             strokeLineJoin = new SimpleObjectProperty<>(this, "strokeLineJoin", DEFAULT_STROKE_LINE_JOIN);
             strokeLineJoin.addListener((v, o, n) -> forwardShapeProperty(s -> setStrokeLineJoin(n)));
         }
         return strokeLineJoin;
-    }
-
-    @Override
-    public void setStrokeLineJoin(StrokeLineJoin strokeLineJoin) {
-        strokeLineJoinProperty().set(strokeLineJoin);
-    }
-
-    @Override
-    public double getStrokeMiterLimit() {
-        return strokeMiterLimitProperty().get();
     }
 
     @Override
@@ -281,16 +221,6 @@ public abstract class AbstractSilhouette implements Silhouette {
     }
 
     @Override
-    public void setStrokeMiterLimit(double strokeMiterLimit) {
-        strokeMiterLimitProperty().set(strokeMiterLimit);
-    }
-
-    @Override
-    public Paint getStroke() {
-        return strokeProperty().get();
-    }
-
-    @Override
     public ObjectProperty<Paint> strokeProperty() {
         if (stroke == null) {
             stroke = new SimpleObjectProperty<>(this, "stroke", Color.BLACK);
@@ -300,32 +230,12 @@ public abstract class AbstractSilhouette implements Silhouette {
     }
 
     @Override
-    public void setStroke(Paint stroke) {
-        strokeProperty().set(stroke);
-    }
-
-    @Override
-    public StrokeType getStrokeType() {
-        return strokeTypeProperty().get();
-    }
-
-    @Override
     public ObjectProperty<StrokeType> strokeTypeProperty() {
         if (strokeType == null) {
             strokeType = new SimpleObjectProperty<>(this, "strokeType", DEFAULT_STROKE_TYPE);
             strokeType.addListener((v, o, n) -> forwardShapeProperty(s -> s.setStrokeType(n)));
         }
         return strokeType;
-    }
-
-    @Override
-    public void setStrokeType(StrokeType strokeType) {
-        strokeTypeProperty().set(strokeType);
-    }
-
-    @Override
-    public double getStrokeWidth() {
-        return strokeWidthProperty().get();
     }
 
     @Override
@@ -344,16 +254,6 @@ public abstract class AbstractSilhouette implements Silhouette {
     }
 
     @Override
-    public void setStrokeWidth(double strokeWidth) {
-        strokeWidthProperty().set(strokeWidth);
-    }
-
-    @Override
-    public String getId() {
-        return idProperty().get();
-    }
-
-    @Override
     public StringProperty idProperty() {
         if (id == null) {
             id = new SimpleStringProperty(this, "id");
@@ -363,32 +263,12 @@ public abstract class AbstractSilhouette implements Silhouette {
     }
 
     @Override
-    public void setId(String id) {
-        idProperty().set(id);
-    }
-
-    @Override
-    public boolean isManaged() {
-        return managedProperty().get();
-    }
-
-    @Override
     public BooleanProperty managedProperty() {
         if (managed == null) {
             managed = new SimpleBooleanProperty(this, "managed", true);
             managed.addListener((v, o, n) -> forwardShapeProperty(s -> s.setManaged(n)));
         }
         return managed;
-    }
-
-    @Override
-    public void setManaged(boolean managed) {
-        managedProperty().set(managed);
-    }
-
-    @Override
-    public double getOpacity() {
-        return opacityProperty().get();
     }
 
     @Override
@@ -407,16 +287,6 @@ public abstract class AbstractSilhouette implements Silhouette {
     }
 
     @Override
-    public void setOpacity(double opacity) {
-        opacityProperty().set(opacity);
-    }
-
-    @Override
-    public double getRotate() {
-        return rotateProperty().get();
-    }
-
-    @Override
     public DoubleProperty rotateProperty() {
         if (rotate == null) {
             rotate = new SimpleDoubleProperty(this, "rotate", 0);
@@ -432,32 +302,12 @@ public abstract class AbstractSilhouette implements Silhouette {
     }
 
     @Override
-    public void setRotate(double rotate) {
-        rotateProperty().set(rotate);
-    }
-
-    @Override
-    public Point3D getRotationAxis() {
-        return rotationAxisProperty().get();
-    }
-
-    @Override
     public ObjectProperty<Point3D> rotationAxisProperty() {
         if (rotationAxis == null) {
             rotationAxis = new SimpleObjectProperty<>(this, "rotationAxis", Rotate.Z_AXIS);
             rotationAxis.addListener((v, o, n) -> forwardShapeProperty(s -> s.setRotationAxis(n)));
         }
         return rotationAxis;
-    }
-
-    @Override
-    public void setRotationAxis(Point3D rotationAxis) {
-        rotationAxisProperty().set(rotationAxis);
-    }
-
-    @Override
-    public double getScaleX() {
-        return scaleXProperty().get();
     }
 
     @Override
@@ -476,16 +326,6 @@ public abstract class AbstractSilhouette implements Silhouette {
     }
 
     @Override
-    public void setScaleX(double scaleX) {
-        scaleXProperty().set(scaleX);
-    }
-
-    @Override
-    public double getScaleY() {
-        return scaleYProperty().get();
-    }
-
-    @Override
     public DoubleProperty scaleYProperty() {
         if (scaleY == null) {
             scaleY = new SimpleDoubleProperty(this, "scaleY", 1);
@@ -498,16 +338,6 @@ public abstract class AbstractSilhouette implements Silhouette {
             });
         }
         return scaleY;
-    }
-
-    @Override
-    public void setScaleY(double scaleY) {
-        scaleYProperty().set(scaleY);
-    }
-
-    @Override
-    public double getScaleZ() {
-        return scaleZProperty().get();
     }
 
     @Override
@@ -526,32 +356,12 @@ public abstract class AbstractSilhouette implements Silhouette {
     }
 
     @Override
-    public void setScaleZ(double scaleZ) {
-        scaleZProperty().set(scaleZ);
-    }
-
-    @Override
-    public String getStyle() {
-        return styleProperty().get();
-    }
-
-    @Override
     public StringProperty styleProperty() {
         if (style == null) {
             style = new SimpleStringProperty(this, "id");
             style.addListener((v, o, n) -> forwardShapeProperty(s -> s.setStyle(n)));
         }
         return style;
-    }
-
-    @Override
-    public void setStyle(String style) {
-        styleProperty().set(style);
-    }
-
-    @Override
-    public double getTranslateX() {
-        return translateXProperty().get();
     }
 
     @Override
@@ -570,16 +380,6 @@ public abstract class AbstractSilhouette implements Silhouette {
     }
 
     @Override
-    public void setTranslateX(double translateX) {
-        translateXProperty().set(translateX);
-    }
-
-    @Override
-    public double getTranslateY() {
-        return translateYProperty().get();
-    }
-
-    @Override
     public DoubleProperty translateYProperty() {
         if (translateY == null) {
             translateY = new SimpleDoubleProperty(this, "translateY", 0);
@@ -592,16 +392,6 @@ public abstract class AbstractSilhouette implements Silhouette {
             });
         }
         return translateY;
-    }
-
-    @Override
-    public void setTranslateY(double translateY) {
-        translateYProperty().set(translateY);
-    }
-
-    @Override
-    public double getTranslateZ() {
-        return translateZProperty().get();
     }
 
     @Override
@@ -620,27 +410,12 @@ public abstract class AbstractSilhouette implements Silhouette {
     }
 
     @Override
-    public void setTranslateZ(double translateZ) {
-        translateZProperty().set(translateZ);
-    }
-
-    @Override
-    public boolean isVisible() {
-        return visibleProperty().get();
-    }
-
-    @Override
     public BooleanProperty visibleProperty() {
         if (visible == null) {
             visible = new SimpleBooleanProperty(this, "managed", true);
             visible.addListener((v, o, n) -> forwardShapeProperty(s -> s.setVisible(n)));
         }
         return visible;
-    }
-
-    @Override
-    public void setVisible(boolean visible) {
-        visibleProperty().set(visible);
     }
 
     protected void forwardShapeProperty(Consumer<Shape> consumer) {
