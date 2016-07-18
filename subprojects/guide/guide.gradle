@@ -39,7 +39,7 @@ configurations {
 }
 
 dependencies {
-    asciidoclet 'org.asciidoctor:asciidoclet:1.5.2'
+    asciidoclet 'org.asciidoctor:asciidoclet:1.5.4'
     java2html 'de.java2html:java2html:5.0'
 }
 
@@ -126,6 +126,10 @@ java2html {
         docDescription = "JSilhouette ${project.version}"
         stylesheet     = file('src/javadoc/resources/css/stylesheet.css')
     }
+}
+
+asciidoctorj {
+    version = '1.5.4.1'
 }
 
 asciidoctor {
