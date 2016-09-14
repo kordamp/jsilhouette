@@ -24,11 +24,11 @@ evaluationDependsOn ':image-generator'
 task generateImages {
     dependsOn project(':image-generator').run
     doFirst {
-        file(javadoc.destinationDir).mkdirs()
+        file("${buildDir}/api").mkdirs()
     }
     doLast {
         copy {
-            into file("${javadoc.destinationDir}/images")
+            into file("${buildDir}/api/images")
             from project(':image-generator').file('build/images')
         }
     }
@@ -58,7 +58,7 @@ task apiDocs(type: Javadoc, dependsOn: copyDocs) {
     options.docletpath = configurations.asciidoclet.files.asType(List)
     options.doclet     = 'org.asciidoctor.Asciidoclet'
     options.addStringOption "-base-dir", "${projectDir}"
-    options.addStringOption "-attribute", "imagesdir=${javadoc.destinationDir}/images"
+    options.addStringOption "-attribute", "imagesdir=../../../../images"
 
     source          = copyDocs.destinationDir
     destinationDir  = file("${buildDir}/api")
