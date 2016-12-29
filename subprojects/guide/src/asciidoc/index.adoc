@@ -14,4 +14,4 @@ include::usage.adoc[]
 
 link:api/index.html[Javadoc, window="_blank"]
 
-link:api-src/index.html[API Sources, window="_blank"]
+// link:api-src/index.html[API Sources, window="_blank"]

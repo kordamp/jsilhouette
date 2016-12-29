@@ -106,7 +106,8 @@ task sourceHtmlJar(type: Jar, dependsOn: java2html) {
     from java2htmlConvertCode.destDir
 }
 
-task docsJar(dependsOn: [javadocJar, sourceHtmlJar]) { }
+// task docsJar(dependsOn: [javadocJar, sourceHtmlJar]) { }
+task docsJar(dependsOn: javadocJar) { }
 
 java2html {
     conversion {
@@ -163,10 +164,10 @@ asciidoctor {
     }
 }
 
-task guide(type: Copy, dependsOn: [apiDocs, generateJava2html, asciidoctor]) {
+task guide(type: Copy, dependsOn: [apiDocs, /*generateJava2html,*/ asciidoctor]) {
     destinationDir = "${buildDir}/guide" as File
     from(apiDocs.destinationDir)       { into 'api' }
-    from(java2htmlConvertCode.destDir) { into 'api-src'}
+    // from(java2htmlConvertCode.destDir) { into 'api-src'}
     from("${asciidoctor.outputDir}/html5")
 }
 
