@@ -6,6 +6,7 @@
 
 image:http://img.shields.io/badge/license-ASL2-blue.svg["ASL3 Licensed", link="http://opensource.org/licenses/ASL2"]
 image:https://api.bintray.com/packages/{project-owner}/{project-repo}/{project-name}/images/download.svg[link="https://bintray.com/{project-owner}/{project-repo}/{project-name}/_latestVersion"]
+image:(https://img.shields.io/maven-central/v/org.kordamp.jsilhouette/jsilhouette-javafx.svg?label=maven[https://search.maven.org/#search|ga|1|org.kordamp.jsilhouette]
 
 ---
 
