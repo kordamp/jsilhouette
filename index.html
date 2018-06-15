@@ -23,13 +23,13 @@
 <ul class="sectlevel1">
 <li><a href="#_introduction">1. Introduction</a>
 <ul class="sectlevel2">
-<li><a href="#_licensing">1.1. Licensing</a></li>
-<li><a href="#_download">1.2. Download</a></li>
+<li><a href="#_download">1.1. Download</a></li>
 </ul>
 </li>
 <li><a href="#_usage">2. Usage</a>
 <ul class="sectlevel2">
-<li><a href="#_installing">2.1. Installing</a></li>
+<li><a href="#_javafx">2.1. JavaFX</a></li>
+<li><a href="#_installing">2.2. Installing</a></li>
 </ul>
 </li>
 <li><a href="#_links">3. Links</a></li>
@@ -44,15 +44,7 @@
 <p>JSilhouette provides additional shapes for Java applications. Currently JavaFX is supported.</p>
 </div>
 <div class="sect2">
-<h3 id="_licensing"><a class="anchor" href="#_licensing"></a>1.1. Licensing</h3>
-<div class="paragraph">
-<p>JSilhouette is open source software with dual licensing, under GPLv3 and ASLv2. GPLv3 is the base license that governs all
-source code. If you make use of JSilhouette with either the <a href="https://github.com/griffon/griffon">Griffon Framework</a> or
-the <a href="https://github.com/basilisk-fw/basilisk">Basilisk Framework</a> then the GPLv3 is suspended and ASLv2 applies.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_download"><a class="anchor" href="#_download"></a>1.2. Download</h3>
+<h3 id="_download"><a class="anchor" href="#_download"></a>1.1. Download</h3>
 <div class="paragraph">
 <p>JSilhouette can be downloaded from Bintray
 <span class="image"><a class="image" href="https://bintray.com/aalmiray/kordamp/jsilhouette/_latestVersion"><img src="https://api.bintray.com/packages/aalmiray/kordamp/jsilhouette/images/download.svg" alt="download"></a></span>.</p>
@@ -64,7 +56,20 @@ the <a href="https://github.com/basilisk-fw/basilisk">Basilisk Framework</a> the
 <h2 id="_usage"><a class="anchor" href="#_usage"></a>2. Usage</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_installing"><a class="anchor" href="#_installing"></a>2.1. Installing</h3>
+<h3 id="_javafx"><a class="anchor" href="#_javafx"></a>2.1. JavaFX</h3>
+<div class="paragraph">
+<p>Shapes provided by <code>jsilhouette-javafx</code> do not extend the <code>javafx.scene.shape.Shape</code> class given that that particular type is closed for extension,
+but these shapes provide a pair of methods that can return a <code>javafx.scene.shape.Shape</code> instance ready to be used. These methods are</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">javafx.scene.shape.Shape getShape()
+javafx.beans.property.ObjectProperty&lt;javafx.scene.shape.Shape&gt; shapeProperty()</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_installing"><a class="anchor" href="#_installing"></a>2.2. Installing</h3>
 <div class="listingblock">
 <div class="title">gradle</div>
 <div class="content">
@@ -96,7 +101,7 @@ the <a href="https://github.com/basilisk-fw/basilisk">Basilisk Framework</a> the
 <div id="footer">
 <div id="footer-text">
 Version 0.2.2<br>
-Last updated 2016-12-29 09:13:37 CST
+Last updated 2016-12-29 16:13:37 CET
 </div>
 </div>
 </body>
