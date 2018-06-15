@@ -2,6 +2,17 @@
 [[_usage]]
 = Usage
 
+== JavaFX
+
+Shapes provided by `jsilhouette-javafx` do not extend the `javafx.scene.shape.Shape` class given that that particular type is closed for extension,
+but these shapes provide a pair of methods that can return a `javafx.scene.shape.Shape` instance ready to be used. These methods are
+
+[source,java]
+----
+javafx.scene.shape.Shape getShape()
+javafx.beans.property.ObjectProperty<javafx.scene.shape.Shape> shapeProperty()
+----
+
 == Installing
 
 [source,groovy]
