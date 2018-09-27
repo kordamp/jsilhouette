@@ -23,7 +23,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 import org.kordamp.jsilhouette.javafx.Lauburu;
-import org.kordamp.jsilhouette.javafx.Rays;
 import org.kordamp.jsilhouette.javafx.Silhouette;
 
 import java.net.URL;

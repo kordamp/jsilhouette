@@ -1,9 +1,10 @@
 = JSilhouette
 :linkattrs:
-:project-owner: aalmiray
-:project-repo:  kordamp
-:project-name:  jsilhouette
-:project-group: org.kordamp.jsilhouette
+:project-owner:   aalmiray
+:project-repo:    kordamp
+:project-name:    jsilhouette
+:project-group:   org.kordamp.jsilhouette
+:project-version: 0.3.0
 
 image:http://img.shields.io/travis/aalmiray/{project-name}/master.svg["Build Status (travis)", link="https://travis-ci.org/aalmiray/{project-name}"]
 image:http://img.shields.io/badge/license-ASL2-blue.svg["ASL2 Licensed", link="http://opensource.org/licenses/ASL2"]
@@ -17,17 +18,55 @@ JSilhouette provides additional shapes for Java applications. Currently JavaFX i
 
 == Installing
 
-You can get the latest version of **JSilhouette** directly from link:https://bintray.com[Bintray's JCenter] repository.
+You can get the latest version of **JSilhouette** directly from link:https://bintray.com[Bintray's JCenter] repository or Maven Central.
+
+[source,groovy]
+[subs="attributes"]
+.gradle
+----
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile '{project-group}:jsilhouette-javafx:{project-version}'
+}
+----
+
+[source,xml]
+[subs="attributes,verbatim"]
+.maven
+----
+<dependencies>
+    <dependency>
+        <groupId>{project-group}</groupId>
+        <artifactId>jsilhouette-javafx</artifactId>
+        <version>{project-version}</version>
+    </dependency>
+</dependencies>
+
+<repositories>
+    <repository>
+        <id>central</id>
+        <name>jcenter</name>
+        <url>http://jcenter.bintray.com</url>
+    </repository>
+</repositories>
+----
 
 Refer to the link:http://aalmiray.github.io/jsilhouette/[guide, window="_blank"] for further information on configuration
 and usage.
+
+=== Java 9+
+
+JSilhouette can be used in a modular fashion when running in Java9+. It's module name is `org.kordamp.jsilhouette.javafx`.
 
 == Building
 
 You must meet the following requirements:
 
- * JDK8u40 as a minimum
- * Gradle 4.4
+ * JDK8u60 as a minimum
+ * Gradle 4.10
 
 You may used the included gradle wrapper script if you don't have `gradle` installed.
 
@@ -45,7 +84,7 @@ You may used the included gradle wrapper script if you don't have `gradle` insta
 
  . Follow the instructions found at http://sdkman.io/ to install SDKMAN.
  . You need a POSIX environment if running Windows. We recommend using Babun Shell (http://babun.github.io/)
- . Once SDKMAN is installed invoke `sdk install gradle 2.10`.
+ . Once SDKMAN is installed invoke `sdk install gradle 4.10`.
  . Test your setup by invoking `gradle --version`.
 
 .Gdub

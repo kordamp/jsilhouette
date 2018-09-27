@@ -1,3 +1,5 @@
+enableFeaturePreview('STABLE_PUBLISHING')
+
 rootProject.name = 'jsilhouette'
 
 def includeProject = { String projectDirName, String projectName ->
@@ -14,5 +16,6 @@ def includeProject = { String projectDirName, String projectName ->
 }
 
 includeProject 'subprojects', 'jsilhouette-javafx'
+includeProject 'subprojects', 'sampler-javafx'
 includeProject 'subprojects', 'guide'
 includeProject 'subprojects', 'image-generator'

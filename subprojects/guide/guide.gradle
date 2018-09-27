@@ -1,3 +1,19 @@
+/*
+ * Copyright 2015-2018 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 buildscript {
     repositories {
         jcenter()
@@ -39,7 +55,7 @@ configurations {
 }
 
 dependencies {
-    asciidoclet 'org.asciidoctor:asciidoclet:1.5.4'
+    asciidoclet 'org.asciidoctor:asciidoclet:1.5.6'
     java2html 'de.java2html:java2html:5.0'
 }
 
@@ -81,11 +97,8 @@ task apiDocs(type: Javadoc, dependsOn: copyDocs) {
     options.windowTitle = "JSilhouette ${project.version}"
     options.docTitle    = "JSilhouette ${project.version}"
     options.footer      = project.javadocFooter
-    options.links       = ['http://www.slf4j.org/apidocs/',
-                           'http://junit.org/javadoc/latest/',
-                           'http://docs.oracle.com/javase/8/docs/api/',
-                           'http://jsr-305.googlecode.com/svn/trunk/javadoc/',
-                           'http://atinject.googlecode.com/svn/trunk/javadoc/']
+    options.links       = ['http://docs.oracle.com/javase/8/docs/api/',
+                           'http://docs.oracle.com/javase/8/javafx/api/']
 }
 
 task generateJava2html {
@@ -163,7 +176,7 @@ asciidoctor {
 task guide(type: Copy, dependsOn: [apiDocs, /*generateJava2html,*/ asciidoctor]) {
     destinationDir = "${buildDir}/guide" as File
     from(apiDocs.destinationDir)       { into 'api' }
-    // from(java2htmlConvertCode.destDir) { into 'api-src'}
+    from(java2htmlConvertCode.destDir) { into 'api-src'}
     from("${asciidoctor.outputDir}/html5")
 }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2017 Andres Almiray
+ * Copyright 2015-2018 Andres Almiray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,7 +54,7 @@ public class Star extends AbstractCenteredSilhouette {
     }
 
     public Star(double cx, double cy, double or, double ir) {
-        this(cy, cy, or, ir, 0);
+        this(cx, cy, or, ir, 0);
     }
 
     public Star(double cx, double cy, double or, double ir, int sides) {

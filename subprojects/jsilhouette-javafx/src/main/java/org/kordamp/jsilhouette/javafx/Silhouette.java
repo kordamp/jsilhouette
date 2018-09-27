@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2017 Andres Almiray
+ * Copyright 2015-2018 Andres Almiray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,9 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.StringProperty;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.geometry.Point3D;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Shape;
@@ -260,4 +263,34 @@ public interface Silhouette {
     default void setVisible(boolean visible) {
         visibleProperty().set(visible);
     }
+
+    // PENDING_DOC_REVIEW
+    /**
+     * Registers an event handler to this node. The handler is called when the
+     * node receives an {@code Event} of the specified type during the bubbling
+     * phase of event delivery.
+     *
+     * @param <T> the specific event class of the handler
+     * @param eventType the type of the events to receive by the handler
+     * @param eventHandler the handler to register
+     * @throws NullPointerException if the event type or handler is null
+     */
+    <T extends Event> void addEventHandler(
+        final EventType<T> eventType,
+        final EventHandler<? super T> eventHandler);
+
+    /**
+     * Unregisters a previously registered event handler from this node. One
+     * handler might have been registered for different event types, so the
+     * caller needs to specify the particular event type from which to
+     * unregister the handler.
+     *
+     * @param <T> the specific event class of the handler
+     * @param eventType the event type from which to unregister
+     * @param eventHandler the handler to unregister
+     * @throws NullPointerException if the event type or handler is null
+     */
+    <T extends Event> void removeEventHandler(
+        final EventType<T> eventType,
+        final EventHandler<? super T> eventHandler);
 }

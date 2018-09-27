@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2017 Andres Almiray
+ * Copyright 2015-2018 Andres Almiray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,9 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.geometry.Point3D;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -33,6 +36,8 @@ import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.shape.StrokeType;
 import javafx.scene.transform.Rotate;
 
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
 
 /**
@@ -77,6 +82,8 @@ public abstract class AbstractSilhouette implements Silhouette {
             calculateShape();
         }
     };
+
+    private final List<EventHandlerRegistration<?>> eventHandlers = new CopyOnWriteArrayList<>();
 
     protected void setShape(Shape shape) {
         shapeProperty().set(shape);
@@ -386,6 +393,72 @@ public abstract class AbstractSilhouette implements Silhouette {
     protected void forwardShapeProperty(Consumer<Shape> consumer) {
         if (shape != null && getShape() != null) {
             consumer.accept(getShape());
+        }
+    }
+
+    public final <T extends Event> void addEventHandler(
+        final EventType<T> eventType,
+        final EventHandler<? super T> eventHandler) {
+        if (eventType == null) {
+            throw new NullPointerException("Argument 'eventType' is null");
+        }
+        if (eventHandler == null) {
+            throw new NullPointerException("Argument 'eventHandler' is null");
+        }
+
+        if (shape == null) {
+            EventHandlerRegistration<T> registration = new EventHandlerRegistration<>(eventType, eventHandler);
+            if (!eventHandlers.contains(registration)) {
+                eventHandlers.add(registration);
+            }
+        } else {
+            shape.get().addEventHandler(eventType, eventHandler);
+        }
+    }
+
+    public final <T extends Event> void removeEventHandler(
+        final EventType<T> eventType,
+        final EventHandler<? super T> eventHandler) {
+        if (eventType == null) {
+            throw new NullPointerException("Argument 'eventType' is null");
+        }
+        if (eventHandler == null) {
+            throw new NullPointerException("Argument 'eventHandler' is null");
+        }
+
+        if (shape == null) {
+            EventHandlerRegistration<T> registration = new EventHandlerRegistration<>(eventType, eventHandler);
+            eventHandlers.remove(registration);
+        } else {
+            shape.get().removeEventHandler(eventType, eventHandler);
+        }
+    }
+
+    private static class EventHandlerRegistration<T extends Event> {
+        private final EventType<T> eventType;
+        private final EventHandler<? super T> eventHandler;
+
+        private EventHandlerRegistration(EventType<T> eventType, EventHandler<? super T> eventHandler) {
+            this.eventType = eventType;
+            this.eventHandler = eventHandler;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) { return true; }
+            if (o == null || getClass() != o.getClass()) { return false; }
+
+            EventHandlerRegistration<?> that = (EventHandlerRegistration<?>) o;
+
+            if (!eventType.equals(that.eventType)) { return false; }
+            return eventHandler.equals(that.eventHandler);
+        }
+
+        @Override
+        public int hashCode() {
+            int result = eventType.hashCode();
+            result = 31 * result + eventHandler.hashCode();
+            return result;
         }
     }
 }

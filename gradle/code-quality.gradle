@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2017 the original author or authors.
+ * Copyright 2015-2018 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-apply plugin: 'jdepend'
 apply plugin: 'checkstyle'
 apply plugin: 'com.github.hierynomus.license'
 
@@ -22,43 +21,9 @@ def configDir = new File(buildscript.sourceFile.parentFile.parentFile, 'config')
 ext.checkstyleConfigDir = "$configDir/checkstyle"
 
 checkstyle {
-    toolVersion = '6.0'
+    toolVersion = '8.12'
     configFile = new File(checkstyleConfigDir, 'checkstyle.xml')
     configProperties.checkstyleConfigDir = checkstyleConfigDir
-}
-
-if (project.hasProperty('findBugsEnabled') && project.findBugsEnabled.toBoolean()) {
-    apply plugin: 'findbugs'
-    findbugs {
-        toolVersion = '3.0.0'
-        sourceSets = [sourceSets.main]
-        ignoreFailures = true
-        reportsDir = file("$project.buildDir/reports/findbugs")
-        effort = 'max'
-        reportLevel = 'high'
-    }
-
-    findbugsMain {
-        reports {
-            xml.enabled = false
-            html.enabled = true
-        }
-    }
-
-    findbugsTest {
-        reports {
-            xml.enabled = false
-            html.enabled = true
-        }
-    }
-}
-
-
-jdepend {
-    toolVersion = '2.9.1'
-    sourceSets = [sourceSets.main]
-    ignoreFailures = true
-    reportsDir = file("$project.buildDir/reports/jdepend")
 }
 
 license {
@@ -69,7 +34,7 @@ license {
         java = 'SLASHSTAR_STYLE'
         fxml = 'XML_STYLE'
     }
-    ext.year = '2015-2017'
+    ext.year = '2015-2018'
     exclude '**/*.ttf'
     exclude '**/*.eot'
     exclude '**/*.svg'

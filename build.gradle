@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2017 the original author or authors.
+ * Copyright 2015-2018 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,19 +23,16 @@ buildscript {
     }
 
     dependencies {
-        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.2'
         classpath 'nl.javadude.gradle.plugins:license-gradle-plugin:0.11.0'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
-        classpath 'org.ajoberstar:gradle-git:1.7.2'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+        classpath 'org.ajoberstar:gradle-git-publish:0.3.2'
         classpath 'org.kordamp.gradle:stats-gradle-plugin:0.2.2'
-        classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
-        classpath 'net.nemerosa:versioning:2.6.1'
-        classpath 'org.kordamp.gradle:jdeps-gradle-plugin:0.2.0'
-        classpath 'gradle.plugin.net.ossindex:ossindex-gradle-plugin:0.1.1'
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.20.0'
+        classpath 'net.nemerosa:versioning:2.7.1'
     }
 }
 
-apply plugin: 'org.ajoberstar.github-pages'
+apply plugin: 'org.ajoberstar.git-publish'
 apply plugin: 'net.nemerosa.versioning'
 
 Date buildTimeAndDate = new Date()
@@ -44,15 +41,14 @@ ext {
     buildDate = new SimpleDateFormat('yyyy-MM-dd').format(buildTimeAndDate)
     buildTime = new SimpleDateFormat('HH:mm:ss.SSSZ').format(buildTimeAndDate)
     buildRevision = versioning.info.commit
-    buildCreatedBy = "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})".toString()
+    buildJdk = "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})".toString()
+    buildCreatedBy = "Gradle ${gradle.gradleVersion}"
 }
 
 allprojects {
     apply plugin: 'base'
     apply plugin: 'idea'
     apply plugin: 'com.github.ben-manes.versions'
-    apply plugin: 'net.ossindex.audit'
-    apply plugin: 'org.kordamp.jdeps'
 
     repositories {
         jcenter()
@@ -64,12 +60,17 @@ allprojects {
         }
     }
 
-    audit {
-        failOnError = false
-    }
-
-    jdeps {
-        failOnError = false
+    dependencyUpdates.resolutionStrategy = {
+        componentSelection { rules ->
+            rules.all { selection ->
+                boolean rejected = ['alpha', 'beta', 'rc', 'cr', 'm'].any { qualifier ->
+                    selection.candidate.version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
+                }
+                if (rejected) {
+                    selection.reject('Release candidate')
+                }
+            }
+        }
     }
 }
 
@@ -82,9 +83,7 @@ idea {
 
 subprojects { subproj ->
     apply plugin: 'java'
-    apply plugin: 'com.github.kt3k.coveralls'
     apply plugin: 'org.kordamp.gradle.stats'
-    apply from: rootProject.file('gradle/code-coverage.gradle')
     apply from: rootProject.file('gradle/code-quality.gradle')
 
     subproj.tasks.withType(JavaCompile) {
@@ -97,8 +96,6 @@ subprojects { subproj ->
     }
 
     if (subproj.publishJars.toBoolean()) {
-        apply from: rootProject.file('gradle/publishing.gradle')
-
         javadoc {
             excludes = ['**/*.html', 'META-INF/**']
 
@@ -121,6 +118,7 @@ subprojects { subproj ->
         }
 
         task javadocJar(type: Jar) {
+            dependsOn 'javadoc'
             group 'Build'
             description 'An archive of the javadoc'
             classifier 'javadoc'
@@ -134,6 +132,8 @@ subprojects { subproj ->
             sourcesJar
             javadocJar
         }
+
+        apply from: rootProject.file('gradle/publishing.gradle')
     }
 }
 
@@ -142,16 +142,13 @@ evaluationDependsOnChildren()
 if (!project.hasProperty('githubUsername')) ext.githubUsername = ''
 if (!project.hasProperty('githubPassword')) ext.githubPassword = ''
 
-githubPages {
+gitPublish {
     repoUri = project.project_scm
-    pages {
+    branch = 'gh-pages'
+    contents {
         from project(':guide').guide.outputs.files
     }
-
-    credentials {
-        username = githubUsername
-        password = githubPassword
-    }
+    commitMessage = "Publish guide for $version"
 }
 
-publishGhPages.dependsOn(project(':guide').guide)
+gitPublishCommit.dependsOn(project(':guide').guide)
