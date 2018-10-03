@@ -100,7 +100,7 @@ public class Sampler extends Application {
         primaryStage.setTitle("JSilhouette Sampler");
         primaryStage.setScene(scene);
         primaryStage.setWidth(1024);
-        primaryStage.setHeight(1024);
+        primaryStage.setHeight(768);
         primaryStage.show();
     }
 
