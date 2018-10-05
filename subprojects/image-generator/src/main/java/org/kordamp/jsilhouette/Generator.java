@@ -44,6 +44,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import javafx.scene.layout.HBox;
 import org.kordamp.jsilhouette.javafx.CClef;
 import org.kordamp.jsilhouette.javafx.FClef;
 import org.kordamp.jsilhouette.javafx.GClef;
@@ -52,6 +53,7 @@ import org.kordamp.jsilhouette.javafx.GClef;
  * @author Andres Almiray
  */
 public class Generator extends Application {
+
     public static void main(String[] args) {
         launch(Generator.class);
     }
@@ -273,23 +275,17 @@ public class Generator extends Application {
         grid.add(new Star(50, 50, 50, 20, 7).getShape(), 5, 0);
         return grid;
     }
-    
-    private GridPane music(Stage stage) {
+
+    private HBox music(Stage stage) {
         stage.setTitle("Musical shapes");
-        GridPane grid = grid();        
-        
-        Pane gPane = new Pane(new GClef(160, 180).getShape());
-        gPane.setPadding(new Insets(20));
-        grid.add(gPane, 0, 0);
-        
-        Pane fPane = new Pane(new FClef(160, 180).getShape());
-        fPane.setPadding(new Insets(20));
-        grid.add(fPane, 1, 0);
-//        
-        Pane cPane = new Pane(new CClef(160, 180).getShape());
-        cPane.setPadding(new Insets(20));
-        grid.add(cPane, 2, 0);
-        return grid;
+        HBox box = new HBox();
+        box.setSpacing(100);
+        box.setPadding(new Insets(100));
+        box.getChildren().addAll(
+                new GClef(64, 72).getShape(), 
+                new FClef(64, 72).getShape(), 
+                new CClef(64, 72).getShape());
+        return box;
     }
 
     private GridPane grid() {
