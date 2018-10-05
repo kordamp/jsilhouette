@@ -3,3 +3,9 @@
     -fx-stroke: black;
     -fx-stroke-width: 2;
 }
+
+.silhoutte-clef {
+    -fx-stroke: black;
+    -fx-stroke-width: 1;
+    -fx-fill: black;
+}
