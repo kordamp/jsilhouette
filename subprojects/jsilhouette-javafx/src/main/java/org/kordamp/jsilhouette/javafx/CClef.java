@@ -65,11 +65,8 @@ public class CClef extends AbstractSilhouette {
 
         SVGPath s2 = new SVGPath();
         s2.setContent("M 312.208,551.911 L 309.364,551.911 L 309.364,527.661 L 312.208,527.661 L 312.208,551.911 z ");
-//        s2.setLayoutX(-1.8);
-//        s2.setLayoutY(-1.4);
 
         //see https://stackoverflow.com/questions/48263331/manipulating-an-svgpath-in-javafx
-//        Path path = (Path) (Shape.subtract(s, new Rectangle(0, 0)));
         Path path = (Path) Shape.union(s1, s2);
         setShape(path);
         //and https://stackoverflow.com/questions/38953921/how-to-set-the-size-of-a-svgpath-in-javafx
