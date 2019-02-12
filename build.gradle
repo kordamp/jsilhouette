@@ -1,11 +1,13 @@
 /*
- * Copyright 2015-2018 the original author or authors.
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Copyright 2015-2019 Andres Almiray.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *    http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,51 +16,55 @@
  * limitations under the License.
  */
 
-import java.text.SimpleDateFormat
-
-buildscript {
-    repositories {
-        jcenter()
-        maven { url 'https://plugins.gradle.org/m2/' }
-    }
-
-    dependencies {
-        classpath 'nl.javadude.gradle.plugins:license-gradle-plugin:0.11.0'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
-        classpath 'org.ajoberstar:gradle-git-publish:0.3.2'
-        classpath 'org.kordamp.gradle:stats-gradle-plugin:0.2.2'
-        classpath 'com.github.ben-manes:gradle-versions-plugin:0.20.0'
-        classpath 'net.nemerosa:versioning:2.7.1'
-    }
+plugins {
+    id 'com.gradle.build-scan'                version '2.1'
+    id 'org.kordamp.gradle.kordamp-parentpom' version '1.2.1'
+    id 'org.kordamp.gradle.source-xref'       version '0.12.0'
 }
 
-apply plugin: 'org.ajoberstar.git-publish'
-apply plugin: 'net.nemerosa.versioning'
+buildScan {
+    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+    termsOfServiceAgree = 'yes'
+}
 
-Date buildTimeAndDate = new Date()
-ext {
-    buildBy = System.properties['user.name']
-    buildDate = new SimpleDateFormat('yyyy-MM-dd').format(buildTimeAndDate)
-    buildTime = new SimpleDateFormat('HH:mm:ss.SSSZ').format(buildTimeAndDate)
-    buildRevision = versioning.info.commit
-    buildJdk = "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})".toString()
-    buildCreatedBy = "Gradle ${gradle.gradleVersion}"
+config {
+    info {
+        name          = 'JSilhouette'
+        description   = 'Additional shapes for JavaFX applications'
+        inceptionYear = '2015'
+        tags          = ['javafx', 'shapes']
+
+        specification { enabled = false }
+
+        credentials {
+            sonatype {
+                username = project.sonatypeUsername
+                password = project.sonatypePassword
+            }
+        }
+    }
+
+    sourceHtml {
+        overview {
+            stylesheet = project(':guide').file('src/javadoc/resources/css/stylesheet.css')
+        }
+    }
+
+    sourceXref {
+        inputEncoding = 'UTF-8'
+    }
+
+    javadoc {
+        excludes = ['**/*.html', 'META-INF/**']
+        options {
+            links('http://docs.oracle.com/javase/8/docs/api/',
+                'http://docs.oracle.com/javase/8/javafx/api/')
+        }
+    }
 }
 
 allprojects {
-    apply plugin: 'base'
     apply plugin: 'idea'
-    apply plugin: 'com.github.ben-manes.versions'
-
-    repositories {
-        jcenter()
-    }
-
-    if (JavaVersion.current().isJava8Compatible()) {
-        tasks.withType(Javadoc) {
-            options.addStringOption('Xdoclint:none', '-quiet')
-        }
-    }
 
     dependencyUpdates.resolutionStrategy = {
         componentSelection { rules ->
@@ -78,77 +84,65 @@ idea {
     project {
         jdkName '1.8'
         languageLevel '1.8'
+
+        ipr {
+            withXml { provider ->
+                def node = provider.asNode()
+                node.component.find { it.'@name' == 'VcsDirectoryMappings' }?.mapping[0].'@vcs' = 'Git'
+            }
+        }
     }
 }
 
 subprojects { subproj ->
-    apply plugin: 'java'
-    apply plugin: 'org.kordamp.gradle.stats'
-    apply from: rootProject.file('gradle/code-quality.gradle')
-
     subproj.tasks.withType(JavaCompile) {
         sourceCompatibility = subproj.sourceCompatibility
         targetCompatibility = subproj.targetCompatibility
     }
 
-    repositories {
-        jcenter()
-    }
-
-    if (subproj.publishJars.toBoolean()) {
-        javadoc {
-            excludes = ['**/*.html', 'META-INF/**']
-
-            options.use         = true
-            options.splitIndex  = true
-            options.encoding    = 'UTF-8'
-            options.author      = true
-            options.version     = true
-            options.windowTitle = "$project.name $project.version API"
-            options.docTitle    = "$project.name $project.version API"
-            options.links       = ['http://docs.oracle.com/javase/8/docs/api/',
-                                   'http://docs.oracle.com/javase/8/javafx/api/']
+    license {
+        mapping {
+            fxml = 'XML_STYLE'
         }
-
-        task sourcesJar(type: Jar) {
-            group 'Build'
-            description 'An archive of the source code'
-            classifier 'sources'
-            from sourceSets.main.allSource
-        }
-
-        task javadocJar(type: Jar) {
-            dependsOn 'javadoc'
-            group 'Build'
-            description 'An archive of the javadoc'
-            classifier 'javadoc'
-            from javadoc.destinationDir
-        }
-
-        jar.finalizedBy sourcesJar
-        jar.finalizedBy javadocJar
-
-        artifacts {
-            sourcesJar
-            javadocJar
-        }
-
-        apply from: rootProject.file('gradle/publishing.gradle')
     }
 }
 
-evaluationDependsOnChildren()
-
-if (!project.hasProperty('githubUsername')) ext.githubUsername = ''
-if (!project.hasProperty('githubPassword')) ext.githubPassword = ''
-
-gitPublish {
-    repoUri = project.project_scm
-    branch = 'gh-pages'
-    contents {
-        from project(':guide').guide.outputs.files
-    }
-    commitMessage = "Publish guide for $version"
+configurations {
+    asciidoclet
 }
 
-gitPublishCommit.dependsOn(project(':guide').guide)
+dependencies {
+    asciidoclet 'org.asciidoctor:asciidoclet:1.5.6'
+}
+
+evaluationDependsOn ':image-generator'
+
+task generateImages {
+    dependsOn project(':image-generator').run
+    doFirst {
+        file(aggregateJavadocs.destinationDir).mkdirs()
+    }
+    doLast {
+        copy {
+            into file("${aggregateJavadocs.destinationDir}/images")
+            from project(':image-generator').file('build/images')
+        }
+    }
+}
+
+gradle.addBuildListener(new BuildAdapter(){
+    @Override
+    void projectsEvaluated(Gradle gradle) {
+        def createGuideTask = project.tasks.findByName('aggregateJavadocs')
+
+        def aggregateJavadocsTask = rootProject.tasks.findByName('aggregateJavadocs')
+
+        aggregateJavadocsTask.configure {
+            dependsOn generateImages
+            options.docletpath = configurations.asciidoclet.files.asType(List)
+            options.doclet = 'org.asciidoctor.Asciidoclet'
+            options.addStringOption "-base-dir", "${projectDir}"
+            options.addStringOption "-attribute", "imagesdir=${aggregateJavadocsTask.destinationDir}/images"
+        }
+    }
+})
