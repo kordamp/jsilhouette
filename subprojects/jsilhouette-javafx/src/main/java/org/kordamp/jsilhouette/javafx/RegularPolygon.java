@@ -142,7 +142,7 @@ public class RegularPolygon extends AbstractCenteredSilhouette {
 
     private int validateSides(int sides) {
         if (sides < 3) {
-            LOG.info(() -> "sides (" + sides + ") can not be less than 3");
+            LOG.finest(() -> "sides (" + sides + ") can not be less than 3");
             return 3;
         }
         return sides;

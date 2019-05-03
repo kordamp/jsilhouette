@@ -205,7 +205,7 @@ public class Rays extends AbstractCenteredSilhouette {
 
     private int validateBeamCount(int beamCount) {
         if (beamCount < 2) {
-            LOG.info(() -> "beamCount (" + beamCount + ") can not be less than 2");
+            LOG.finest(() -> "beamCount (" + beamCount + ") can not be less than 2");
             return 2;
         }
         return beamCount;
@@ -213,10 +213,10 @@ public class Rays extends AbstractCenteredSilhouette {
 
     protected double validateExtent(double extent) {
         if (extent < 0) {
-            LOG.info(() -> "extent (" + extent + ") must be inside the range [0..1]");
+            LOG.finest(() -> "extent (" + extent + ") must be inside the range [0..1]");
             return 0;
         } else if (extent > 1) {
-            LOG.info(() -> "extent (" + extent + " ) must be inside the range [0..1]");
+            LOG.finest(() -> "extent (" + extent + " ) must be inside the range [0..1]");
             return 1;
         }
         return extent;

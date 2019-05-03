@@ -131,17 +131,17 @@ public class Star extends AbstractCenteredSilhouette {
         int s = getSides();
 
         if (s < 2) {
-            LOG.info("sides (" + s + ") can not be less than 2");
+            LOG.finest("sides (" + s + ") can not be less than 2");
             s = 2;
         }
 
         if (ir >= or) {
-            LOG.info("'ir' can not be equal greater than 'or' [ir=" + ir + ", or=" + or + "]");
+            LOG.finest("'ir' can not be equal greater than 'or' [ir=" + ir + ", or=" + or + "]");
             ir = 3;
             or = 8;
         }
         if (ir < 0 || or < 0) {
-            LOG.info("radii can not be less than zero [ir=" + ir + ", or=" + or + "]");
+            LOG.finest("radii can not be less than zero [ir=" + ir + ", or=" + or + "]");
             ir = 3;
             or = 8;
         }

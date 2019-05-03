@@ -143,10 +143,10 @@ public class Cross extends AbstractCenteredSilhouette {
 
     protected double validateRoundness(double roundness) {
         if (roundness < 0) {
-            LOG.info(() -> "roundness (" + roundness + ") must be inside the range [0..1]");
+            LOG.finest(() -> "roundness (" + roundness + ") must be inside the range [0..1]");
             return 0;
         } else if (roundness > 1) {
-            LOG.info(() -> "roundness (" + roundness + " ) must be inside the range [0..1]");
+            LOG.finest(() -> "roundness (" + roundness + " ) must be inside the range [0..1]");
             return 1;
         }
         return roundness;
@@ -154,7 +154,7 @@ public class Cross extends AbstractCenteredSilhouette {
 
     protected double validateWidth(double width, double radius) {
         if (width > radius * 2) {
-            LOG.info(() -> "width (" + width + ") can not be greater than radius * 2 (" + (radius * 2) + ")");
+            LOG.finest(() -> "width (" + width + ") can not be greater than radius * 2 (" + (radius * 2) + ")");
             return radius * 2;
         }
         return width;

@@ -199,7 +199,7 @@ public class Arrow extends AbstractSilhouette {
 
     private double validateDepth(double depth) {
         if (depth < 0 || depth > 1) {
-            LOG.info(() -> "depth (" + depth + ") must be inside the range [0..1]");
+            LOG.finest(() -> "depth (" + depth + ") must be inside the range [0..1]");
             return 0.5;
         }
         return depth;
@@ -207,7 +207,7 @@ public class Arrow extends AbstractSilhouette {
 
     private double validateRise(double rise) {
         if (rise < 0 || rise > 1) {
-            LOG.info(() -> "rise (" + rise + ") must be inside the range [0..1]");
+            LOG.finest(() -> "rise (" + rise + ") must be inside the range [0..1]");
             return 0.5;
         }
         return rise;
