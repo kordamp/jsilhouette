@@ -1,12 +1,12 @@
 = JSilhouette
 :linkattrs:
-:project-owner:   aalmiray
-:project-repo:    kordamp
+:project-owner:   kordamp
+:project-repo:    maven
 :project-name:    jsilhouette
 :project-group:   org.kordamp.jsilhouette
 :project-version: 0.3.0
 
-image:http://img.shields.io/travis/aalmiray/{project-name}/master.svg["Build Status (travis)", link="https://travis-ci.org/aalmiray/{project-name}"]
+image:http://img.shields.io/travis/{project-owner}/{project-name}/master.svg["Build Status (travis)", link="https://travis-ci.org/{project-owner}/{project-name}"]
 image:http://img.shields.io/badge/license-ASL2-blue.svg["ASL2 Licensed", link="http://opensource.org/licenses/ASL2"]
 image:https://api.bintray.com/packages/{project-owner}/{project-repo}/{project-name}/images/download.svg[link="https://bintray.com/{project-owner}/{project-repo}/{project-name}/_latestVersion"]
 image:https://img.shields.io/maven-central/v/{project-group}/{project-name}-javafx.svg?label=maven[link="https://search.maven.org/#search|ga|1|{project-group}"]
@@ -54,19 +54,19 @@ dependencies {
 </repositories>
 ----
 
-Refer to the link:http://aalmiray.github.io/jsilhouette/[guide, window="_blank"] for further information on configuration
+Refer to the link:http://{project-owner}.github.io/jsilhouette/[guide, window="_blank"] for further information on configuration
 and usage.
 
 === Java 9+
 
-JSilhouette can be used in a modular fashion when running in Java9+. It's module name is `org.kordamp.jsilhouette.javafx`.
+JSilhouette can be used in a modular fashion when running in Java9+. Its module name is `org.kordamp.jsilhouette.javafx`.
 
 == Building
 
 You must meet the following requirements:
 
  * JDK8u60 as a minimum
- * Gradle 4.10
+ * Gradle 5.1
 
 You may used the included gradle wrapper script if you don't have `gradle` installed.
 

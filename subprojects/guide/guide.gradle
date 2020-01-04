@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2019 Andres Almiray.
+ * Copyright 2015-2020 Andres Almiray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 plugins {
-    id 'org.kordamp.gradle.guide'   version '0.12.0'
-    id 'org.ajoberstar.git-publish' version '0.3.2'
+    id 'org.kordamp.gradle.guide'
+    id 'org.ajoberstar.git-publish'
 }
 
 ext.childProjects = [
@@ -28,32 +27,3 @@ ext.childProjects = [
 childProjects.each { evaluationDependsOn it }
 evaluationDependsOn ':image-generator'
 
-afterEvaluate {
-    def createGuideTask = project.tasks.findByName('createGuide')
-
-    gitPublish {
-        repoUri = rootProject.extensions.findByName('config').info.links.scm
-        branch  = 'gh-pages'
-        contents {
-            from createGuideTask.outputs.files
-        }
-        commitMessage = "Publish guide for $version"
-    }
-
-    gitPublishCommit.dependsOn(createGuideTask)
-}
-
-gradle.addBuildListener(new BuildAdapter(){
-    @Override
-    void projectsEvaluated(Gradle gradle) {
-        def createGuideTask = project.tasks.findByName('createGuide')
-
-        def aggregateSourceXrefTask = rootProject.tasks.findByName('aggregateSourceXref')
-
-        createGuideTask.finalizedBy project.tasks.create('copyAggregateXref', Copy) {
-            dependsOn aggregateSourceXrefTask
-            destinationDir = project.file("${createGuideTask.destinationDir}/api-xref")
-            from aggregateSourceXrefTask.outputDirectory
-        }
-    }
-})

@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2019 Andres Almiray.
+ * Copyright 2015-2020 Andres Almiray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-apply plugin: 'java'
+plugins {
+    id 'java-library'
+}
 
 configurations {
     asciidoclet
 }
 
 dependencies {
-    asciidoclet 'org.asciidoctor:asciidoclet:1.5.6'
+    asciidoclet "org.asciidoctor:asciidoclet:$asciidocletVersion"
 }
 
 evaluationDependsOn ':image-generator'

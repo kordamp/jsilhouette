@@ -4,11 +4,11 @@
 :toclevels: 2
 :docinfo1:
 
-include::_links.adoc[]
+include::{includedir}/_links.adoc[]
 
 :leveloffset: 1
-include::introduction.adoc[]
-include::usage.adoc[]
+include::{includedir}/introduction.adoc[]
+include::{includedir}/usage.adoc[]
 
 = Links
 

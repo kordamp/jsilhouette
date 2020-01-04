@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2019 Andres Almiray.
+ * Copyright 2015-2020 Andres Almiray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 plugins {
-    id 'com.gradle.build-scan'                version '2.1'
-    id 'org.kordamp.gradle.kordamp-parentpom' version '1.2.1'
-    id 'org.kordamp.gradle.source-xref'       version '0.12.0'
-}
-
-buildScan {
-    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
-    termsOfServiceAgree = 'yes'
+    id 'org.kordamp.gradle.kordamp-parentpom'
 }
 
 config {
@@ -35,49 +27,30 @@ config {
         tags          = ['javafx', 'shapes']
 
         specification { enabled = false }
+    }
 
-        credentials {
-            sonatype {
-                username = project.sonatypeUsername
-                password = project.sonatypePassword
+    docs {
+        sourceHtml {
+            overview {
+                stylesheet = project(':guide').file('src/javadoc/resources/css/stylesheet.css')
             }
         }
-    }
 
-    sourceHtml {
-        overview {
-            stylesheet = project(':guide').file('src/javadoc/resources/css/stylesheet.css')
+        sourceXref {
+            inputEncoding = 'UTF-8'
         }
-    }
 
-    sourceXref {
-        inputEncoding = 'UTF-8'
-    }
-
-    javadoc {
-        excludes = ['**/*.html', 'META-INF/**']
-        options {
-            links('http://docs.oracle.com/javase/8/docs/api/',
-                'http://docs.oracle.com/javase/8/javafx/api/')
+        javadoc {
+            options {
+                addBooleanOption('javafx', true)
+                links('http://docs.oracle.com/javase/8/javafx/api/')
+            }
         }
     }
 }
 
 allprojects {
     apply plugin: 'idea'
-
-    dependencyUpdates.resolutionStrategy = {
-        componentSelection { rules ->
-            rules.all { selection ->
-                boolean rejected = ['alpha', 'beta', 'rc', 'cr', 'm'].any { qualifier ->
-                    selection.candidate.version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
-                }
-                if (rejected) {
-                    selection.reject('Release candidate')
-                }
-            }
-        }
-    }
 }
 
 idea {
@@ -95,11 +68,6 @@ idea {
 }
 
 subprojects { subproj ->
-    subproj.tasks.withType(JavaCompile) {
-        sourceCompatibility = subproj.sourceCompatibility
-        targetCompatibility = subproj.targetCompatibility
-    }
-
     license {
         mapping {
             fxml = 'XML_STYLE'
@@ -112,7 +80,7 @@ configurations {
 }
 
 dependencies {
-    asciidoclet 'org.asciidoctor:asciidoclet:1.5.6'
+    asciidoclet "org.asciidoctor:asciidoclet:$asciidocletVersion"
 }
 
 evaluationDependsOn ':image-generator'
@@ -120,11 +88,11 @@ evaluationDependsOn ':image-generator'
 task generateImages {
     dependsOn project(':image-generator').run
     doFirst {
-        file(aggregateJavadocs.destinationDir).mkdirs()
+        file(aggregateJavadoc.destinationDir).mkdirs()
     }
     doLast {
         copy {
-            into file("${aggregateJavadocs.destinationDir}/images")
+            into file("${aggregateJavadoc.destinationDir}/images")
             from project(':image-generator').file('build/images')
         }
     }
@@ -133,16 +101,14 @@ task generateImages {
 gradle.addBuildListener(new BuildAdapter(){
     @Override
     void projectsEvaluated(Gradle gradle) {
-        def createGuideTask = project.tasks.findByName('aggregateJavadocs')
+        def aggregateJavadocTask = rootProject.tasks.findByName('aggregateJavadoc')
 
-        def aggregateJavadocsTask = rootProject.tasks.findByName('aggregateJavadocs')
-
-        aggregateJavadocsTask.configure {
+        aggregateJavadocTask.configure {
             dependsOn generateImages
             options.docletpath = configurations.asciidoclet.files.asType(List)
             options.doclet = 'org.asciidoctor.Asciidoclet'
             options.addStringOption "-base-dir", "${projectDir}"
-            options.addStringOption "-attribute", "imagesdir=${aggregateJavadocsTask.destinationDir}/images"
+            options.addStringOption "-attribute", "imagesdir=images"
         }
     }
 })
