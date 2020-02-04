@@ -46,11 +46,16 @@ import java.io.File;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import javafx.scene.layout.HBox;
+import org.kordamp.jsilhouette.javafx.CClef;
+import org.kordamp.jsilhouette.javafx.FClef;
+import org.kordamp.jsilhouette.javafx.GClef;
 
 /**
  * @author Andres Almiray
  */
 public class Generator extends Application {
+
     public static void main(String[] args) {
         launch(Generator.class);
     }
@@ -76,6 +81,7 @@ public class Generator extends Application {
         nodes.put("regular_polygon", regular_polygon(stage));
         nodes.put("roundpin", roundpin(stage));
         nodes.put("star", star(stage));
+        nodes.put("music", music(stage));
 
         nodes.forEach((name, grid) -> {
             Scene scene = new Scene(grid);
@@ -270,6 +276,18 @@ public class Generator extends Application {
         grid.add(new Star(50, 50, 50, 20, 6).getShape(), 4, 0);
         grid.add(new Star(50, 50, 50, 20, 7).getShape(), 5, 0);
         return grid;
+    }
+
+    private HBox music(Stage stage) {
+        stage.setTitle("Musical shapes");
+        HBox box = new HBox();
+        box.setSpacing(100);
+        box.setPadding(new Insets(100));
+        box.getChildren().addAll(
+                new GClef(64, 72).getShape(), 
+                new FClef(64, 72).getShape(), 
+                new CClef(64, 72).getShape());
+        return box;
     }
 
     private GridPane grid() {

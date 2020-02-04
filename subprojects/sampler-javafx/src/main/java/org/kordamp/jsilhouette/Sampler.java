@@ -18,29 +18,27 @@
 package org.kordamp.jsilhouette;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
+import org.kordamp.jsilhouette.javafx.GClef;
 import org.kordamp.jsilhouette.javafx.Lauburu;
 import org.kordamp.jsilhouette.javafx.Silhouette;
-
-import java.net.URL;
 
 /**
  * @author Andres Almiray
  */
 public class Sampler extends Application {
+
     public static void main(String[] args) {
         launch(Sampler.class);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        URL location = getClass().getResource("sampler.fxml");
-        FXMLLoader fxmlLoader = new FXMLLoader(location);
 
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(20, 20, 20, 20));
@@ -48,6 +46,9 @@ public class Sampler extends Application {
         grid.setVgap(20);
 
         grid.add(new Lauburu(50, 50, 50).getShape(), 0, 0);
+        final GClef gClef = new GClef(160, 280);
+        gClef.setFill(Color.LIMEGREEN);
+        grid.add(gClef.getShape(), 1, 0);
 
         /*
         grid.add(new Rays(50, 50, 50, 2, 0.5, true).getShape(), 0, 0);
@@ -98,15 +99,14 @@ public class Sampler extends Application {
         grid.add(new Star(50, 50, 50, 20, 5).getShape(), 2, 6);
         grid.add(new Star(50, 50, 50, 20, 6).getShape(), 3, 6);
         grid.add(new Star(50, 50, 50, 20, 7).getShape(), 4, 6);
-        */
-
+         */
         Scene scene = new Scene(grid);
         scene.getStylesheets().add("org/kordamp/jsilhouette/sampler.css");
 
         primaryStage.setTitle("JSilhouette Sampler");
         primaryStage.setScene(scene);
         primaryStage.setWidth(1024);
-        primaryStage.setHeight(1024);
+        primaryStage.setHeight(768);
         primaryStage.show();
     }
 
