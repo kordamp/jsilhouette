@@ -46,8 +46,8 @@ javadoc {
     dependsOn generateImages
     options.docletpath = configurations.asciidoclet.files.asType(List)
     options.doclet = 'org.asciidoctor.Asciidoclet'
-    options.addStringOption "-base-dir", "${projectDir}"
-    options.addStringOption "-attribute", "imagesdir=${javadoc.destinationDir}/images"
+    options.addStringOption '-base-dir', "${projectDir}"
+    options.addStringOption '-attribute', "imagesdir=${javadoc.destinationDir}/images"
 }
 
 jar {

@@ -15,9 +15,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-plugins {
-    id 'org.kordamp.gradle.kordamp-parentpom'
-}
 
 config {
     info {
@@ -107,8 +104,8 @@ gradle.addBuildListener(new BuildAdapter(){
             dependsOn generateImages
             options.docletpath = configurations.asciidoclet.files.asType(List)
             options.doclet = 'org.asciidoctor.Asciidoclet'
-            options.addStringOption "-base-dir", "${projectDir}"
-            options.addStringOption "-attribute", "imagesdir=images"
+            options.addStringOption '-base-dir', "${projectDir}"
+            options.addStringOption '-attribute', 'imagesdir=images'
         }
     }
 })
