@@ -45,14 +45,6 @@ dependencies {
         <version>{project-version}</version>
     </dependency>
 </dependencies>
-
-<repositories>
-    <repository>
-        <id>central</id>
-        <name>jcenter</name>
-        <url>http://jcenter.bintray.com</url>
-    </repository>
-</repositories>
 ----
 
 Refer to the link:http://{project-owner}.github.io/jsilhouette/[guide, window="_blank"] for further information on configuration
@@ -67,7 +59,7 @@ JSilhouette can be used in a modular fashion when running in Java9+. Its module 
 You must meet the following requirements:
 
  * JDK8u60 as a minimum
- * Gradle 5.1
+ * Gradle 6
 
 You may used the included gradle wrapper script if you don't have `gradle` installed.
 
@@ -85,15 +77,15 @@ You may used the included gradle wrapper script if you don't have `gradle` insta
 
  . Follow the instructions found at http://sdkman.io/ to install SDKMAN.
  . You need a POSIX environment if running Windows. We recommend using Babun Shell (http://babun.github.io/)
- . Once SDKMAN is installed invoke `sdk install gradle 4.10`.
+ . Once SDKMAN is installed invoke `sdk install gradle 6.0`.
  . Test your setup by invoking `gradle --version`.
 
-.Gdub
+.Gum
 
-GDub is a wrapper script that facilitates invoking gradle tasks anywhere within a Gradle project. It's smart enough
+Gum is a wrapper script that facilitates invoking gradle tasks anywhere within a Gradle project. It's smart enough
 to use the gradle wrapper if available or your global gradle command. This is an optional download.
 
- . Follow the instructions found at https://github.com/dougborg/gdub to install gdub
+ . Follow the instructions found at https://github.com/kordamp/gm to install gum
 
 === Next Steps
 
