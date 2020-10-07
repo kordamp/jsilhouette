@@ -18,7 +18,6 @@
 package org.kordamp.jsilhouette;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
@@ -27,7 +26,6 @@ import javafx.stage.Stage;
 import org.kordamp.jsilhouette.javafx.Lauburu;
 import org.kordamp.jsilhouette.javafx.Silhouette;
 
-import java.net.URL;
 
 /**
  * @author Andres Almiray
@@ -39,8 +37,6 @@ public class Sampler extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        URL location = getClass().getResource("sampler.fxml");
-        FXMLLoader fxmlLoader = new FXMLLoader(location);
 
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(20, 20, 20, 20));
@@ -106,7 +102,7 @@ public class Sampler extends Application {
         primaryStage.setTitle("JSilhouette Sampler");
         primaryStage.setScene(scene);
         primaryStage.setWidth(1024);
-        primaryStage.setHeight(1024);
+        primaryStage.setHeight(768);
         primaryStage.show();
     }
 
