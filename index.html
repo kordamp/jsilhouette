@@ -2,21 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.6.1">
+<meta name="generator" content="Asciidoctor 2.0.10">
 <meta name="author" content="Andres Almiray">
 <title>Additional shapes for JavaFX applications</title>
-<link rel="stylesheet" href="./css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
 <h1>Additional shapes for JavaFX applications</h1>
 <div class="details">
 <span id="author" class="author">Andres Almiray</span><br>
-<span id="revnumber">version 0.3.0</span>
+<span id="revnumber">version 0.4.0</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -32,7 +32,23 @@
 <li><a href="#_installing">2.2. Installing</a></li>
 </ul>
 </li>
-<li><a href="#_links">3. Links</a></li>
+<li><a href="#_shapes">3. Shapes</a>
+<ul class="sectlevel2">
+<li><a href="#_almond">3.1. Almond</a></li>
+<li><a href="#_arrow">3.2. Arrow</a></li>
+<li><a href="#_asterisk">3.3. Asterisk</a></li>
+<li><a href="#_astroid">3.4. Astroid</a></li>
+<li><a href="#_cross">3.5. Cross</a></li>
+<li><a href="#_donut">3.6. Donut</a></li>
+<li><a href="#_lauburu">3.7. Lauburu</a></li>
+<li><a href="#_multiround_rectangle">3.8. Multiround Rectangle</a></li>
+<li><a href="#_rays">3.9. Rays</a></li>
+<li><a href="#_regular_polygon">3.10. Regular Polygon</a></li>
+<li><a href="#_roundpin">3.11. RoundPin</a></li>
+<li><a href="#_star">3.12. Star</a></li>
+</ul>
+</li>
+<li><a href="#_links">4. Links</a></li>
 </ul>
 </div>
 </div>
@@ -47,7 +63,8 @@
 <h3 id="_download"><a class="anchor" href="#_download"></a>1.1. Download</h3>
 <div class="paragraph">
 <p>JSilhouette can be downloaded from Bintray
-<span class="image"><a class="image" href="https://bintray.com/aalmiray/kordamp/jsilhouette/_latestVersion"><img src="https://api.bintray.com/packages/aalmiray/kordamp/jsilhouette/images/download.svg" alt="download"></a></span>.</p>
+<span class="image"><a class="image" href="https://bintray.com/aalmiray/kordamp/jsilhouette/_latestVersion"><img src="https://api.bintray.com/packages/aalmiray/kordamp/jsilhouette/images/download.svg" alt="download"></a></span>
+or Maven Central.</p>
 </div>
 </div>
 </div>
@@ -73,7 +90,7 @@ javafx.beans.property.ObjectProperty&lt;javafx.scene.shape.Shape&gt; shapeProper
 <div class="listingblock">
 <div class="title">gradle</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile 'org.kordamp.jsilhouette:jsilhouette-javafx:0.3.0'</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">implementation 'org.kordamp.jsilhouette:jsilhouette-javafx:0.4.0'</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -82,7 +99,7 @@ javafx.beans.property.ObjectProperty&lt;javafx.scene.shape.Shape&gt; shapeProper
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.kordamp.jsilhouette<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>jsilhouette-javafx<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>0.3.0<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>0.4.0<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -90,19 +107,124 @@ javafx.beans.property.ObjectProperty&lt;javafx.scene.shape.Shape&gt; shapeProper
 </div>
 </div>
 <div class="sect1">
-<h2 id="_links"><a class="anchor" href="#_links"></a>3. Links</h2>
+<h2 id="_shapes"><a class="anchor" href="#_shapes"></a>3. Shapes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_almond"><a class="anchor" href="#_almond"></a>3.1. Almond</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/shape_almond.png" alt="shape almond">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_arrow"><a class="anchor" href="#_arrow"></a>3.2. Arrow</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/shape_arrow.png" alt="shape arrow">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_asterisk"><a class="anchor" href="#_asterisk"></a>3.3. Asterisk</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/shape_asterisk.png" alt="shape asterisk">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_astroid"><a class="anchor" href="#_astroid"></a>3.4. Astroid</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/shape_astroid.png" alt="shape astroid">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cross"><a class="anchor" href="#_cross"></a>3.5. Cross</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/shape_cross.png" alt="shape cross">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_donut"><a class="anchor" href="#_donut"></a>3.6. Donut</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/shape_donut.png" alt="shape donut">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_lauburu"><a class="anchor" href="#_lauburu"></a>3.7. Lauburu</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/shape_lauburu.png" alt="shape lauburu">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_multiround_rectangle"><a class="anchor" href="#_multiround_rectangle"></a>3.8. Multiround Rectangle</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/shape_multiround_rectangle.png" alt="shape multiround rectangle">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_rays"><a class="anchor" href="#_rays"></a>3.9. Rays</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/shape_rays.png" alt="shape rays">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_regular_polygon"><a class="anchor" href="#_regular_polygon"></a>3.10. Regular Polygon</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/shape_regular_polygon.png" alt="shape regular polygon">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_roundpin"><a class="anchor" href="#_roundpin"></a>3.11. RoundPin</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/shape_roundpin.png" alt="shape roundpin">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_star"><a class="anchor" href="#_star"></a>3.12. Star</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/shape_star.png" alt="shape star">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_links"><a class="anchor" href="#_links"></a>4. Links</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="api/index.html" target="_blank" rel="noopener">Javadoc</a></p>
+</div>
+<div class="paragraph">
+<p><a href="api-xref/index.html" target="_blank" rel="noopener">API Xref</a></p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.3.0<br>
-Last updated 2016-12-29 16:13:37 CET
+Version 0.4.0<br>
+Last updated 2020-12-09 11:35:55 +0100
 </div>
 </div>
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
 </body>
 </html>
