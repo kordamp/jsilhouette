@@ -47,6 +47,9 @@ config {
             options {
                 addBooleanOption('javafx', true)
                 links('https://openjfx.io/javadoc/11/')
+                autoLinks {
+                    enabled = false
+                }
             }
             aggregate {
                 enabled = false
