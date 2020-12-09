@@ -7,4 +7,5 @@ JSilhouette provides additional shapes for Java applications. Currently JavaFX i
 == Download
 
 JSilhouette can be downloaded from Bintray
-image:https://api.bintray.com/packages/{project-owner}/{project-repo}/jsilhouette/images/download.svg[link="https://bintray.com/{project-owner}/{project-repo}/jsilhouette/_latestVersion"].
+image:https://api.bintray.com/packages/{project-owner}/{project-repo}/jsilhouette/images/download.svg[link="https://bintray.com/{project-owner}/{project-repo}/jsilhouette/_latestVersion"]
+or Maven Central.
