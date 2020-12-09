@@ -1,0 +1,40 @@
+
+[[_shapes]]
+= Shapes
+
+== Almond
+image::../images/shape_almond.png[]
+
+== Arrow
+image::../images/shape_arrow.png[]
+
+== Asterisk
+image::../images/shape_asterisk.png[]
+
+== Astroid
+image::../images/shape_astroid.png[]
+
+== Cross
+image::../images/shape_cross.png[]
+
+== Donut
+image::../images/shape_donut.png[]
+
+== Lauburu
+image::../images/shape_lauburu.png[]
+
+== Multiround Rectangle
+image::../images/shape_multiround_rectangle.png[]
+
+== Rays
+image::../images/shape_rays.png[]
+
+== Regular Polygon
+image::../images/shape_regular_polygon.png[]
+
+== RoundPin
+image::../images/shape_roundpin.png[]
+
+== Star
+image::../images/shape_star.png[]
+

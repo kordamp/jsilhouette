@@ -15,19 +15,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/**
+ * @author Andres Almiray
+ */
+module org.kordamp.jsilhouette.javafx {
+    exports org.kordamp.jsilhouette.javafx;
 
-plugins {
-    id 'java-library'
-    id 'org.jonnyzzz.java9c'
-    id 'org.javamodularity.moduleplugin'
-}
+    requires transitive javafx.base;
+    requires transitive javafx.graphics;
 
-config {
-    bintray { enabled = true }
-}
-
-dependencies {
-    compileOnly "org.openjfx:javafx-base:${javafxVersion}:${platform}"
-    compileOnly "org.openjfx:javafx-graphics:${javafxVersion}:${platform}"
-    compileOnly "org.openjfx:javafx-controls:${javafxVersion}:${platform}"
+    requires java.logging;
 }

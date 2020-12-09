@@ -28,21 +28,20 @@ import javafx.scene.shape.Shape;
 import java.util.logging.Logger;
 
 /**
- * = Rays
- *
+ * Rays
+ * <p>
  * Defines a radial shape.
- * 
- * image::shape_rays.png[]
- * 
- * == Constraints
- * 
- * . `beamCount` > 1
- * . 0 +<=+ `extent` +<=+ 1
- * 
- * == Style Classes
- * 
- * . `silhouette`
- * . `silhouette-rays`
+ *
+ * <h3>Constraints</h3>
+ * <ul>
+ *  <li>beamCount &gt; 1</li>
+ *  <li>0 &lt;= extent &lt;= 1</li>
+ * </ul>
+ * <h3>Style Classes</h3>
+ * <ul>
+ *  <li>silhouette</li>
+ *  <li>silhouette-rays</li>
+ * </ul>
  *
  * @author Andres Almiray
  */

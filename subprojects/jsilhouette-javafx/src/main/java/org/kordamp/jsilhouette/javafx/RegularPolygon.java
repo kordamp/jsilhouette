@@ -26,20 +26,19 @@ import javafx.scene.shape.Path;
 import java.util.logging.Logger;
 
 /**
- * = RegularPlygon
- *
+ * RegularPlygon
+ * <p>
  * Defines a regular polygon shape.
  *
- * image::shape_regular_polygon.png[]
- *
- * == Constraints
- *
- *  . `sides` > 2
- *
- * == Style Classes
- *
- *  . `silhouette`
- *  . `silhouette-regular-polygon`
+ * <h3>Constraints</h3>
+ * <ul>
+ *  <li>sides &gt; 2</li>
+ * </ul>
+ * <h3>Style Classes</h3>
+ * <ul>
+ *  <li>silhouette</li>
+ *  <li>silhouette-regular-polygon</li>
+ * </ul>
  *
  * @author Andres Almiray
  */

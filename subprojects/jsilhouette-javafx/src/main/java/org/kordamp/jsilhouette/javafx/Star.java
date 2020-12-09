@@ -26,22 +26,21 @@ import javafx.scene.shape.Shape;
 import java.util.logging.Logger;
 
 /**
- * = Star
- *
+ * Star
+ * <p>
  * Defines a star shape.
  *
- * image::shape_star.png[]
- *
- * == Constraints
- *
- *  . `ir` +<=+ `or`
- *  . `ir` > 0 && `or` > 0
- *  . `sides` >= 2
- *
- * == Style Classes
- *
- *  . `silhouette`
- *  . `silhouette-star`
+ * <h3>Constraints</h3>
+ * <ul>
+ *  <li>ir &lt;= or</li>
+ *  <li>ir &gt; 0 &amp;&amp; or &gt; 0</li>
+ *  <li>sides &gt;= 2</li>
+ * </ul>
+ * <h3>Style Classes</h3>
+ * <ul>
+ *  <li>silhouette</li>
+ *  <li>silhouette-star</li>
+ * </ul>
  *
  * @author Andres Almiray
  */

@@ -24,23 +24,22 @@ import javafx.scene.shape.Shape;
 import java.util.logging.Logger;
 
 /**
- * = MultiRoundRectangle
- *
+ * MultiRoundRectangle
+ * <p>
  * Defines a rounded rectangle, each corner may have a different roundness factor.
  *
- * image::shape_multiround_rectangle.png[]
- *
- * == Constraints
- *
- *  . `topLeftWidth` + `topRightWidth` +<=+ `width`
- *  . `topLeftHeight` + `topRightHeight` +<=+ `height`
- *  . `bottomLeftWidth` + `bottomRightWidth` +<=+ `width`
- *  . `bottomLeftHeight` + `bottomRightHeight` +<=+ `height`
- *
- * == Style Classes
- *
- *  . `silhouette`
- *  . `silhouette-multiround-rectangle`
+ * <h3>Constraints</h3>
+ * <ul>
+ *  <li>topLeftWidth + topRightWidth &lt;= width</li>
+ *  <li>topLeftHeight + topRightHeight &lt;= height</li>
+ *  <li>bottomLeftWidth + bottomRightWidth &lt;= width</li>
+ *  <li>bottomLeftHeight + bottomRightHeight &lt;= height</li>
+ * </ul>
+ * <h3>Style Classes</h3>
+ * <ul>
+ *  <li>silhouette</li>
+ *  <li>silhouette-multiround-rectangle</li>
+ * </ul>
  *
  * @author Andres Almiray
  */

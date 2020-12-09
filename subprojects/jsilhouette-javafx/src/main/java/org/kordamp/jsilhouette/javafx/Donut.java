@@ -27,22 +27,21 @@ import javafx.scene.shape.Shape;
 import java.util.logging.Logger;
 
 /**
- * = Donut
- *
+ * Donut
+ * <p>
  * Defines a donut shape based on circles or regular polygons.
  *
- * image::shape_donut.png[]
- *
- * == Constraints
- *
- *  . `ir` +<=+ `or`
- *  . `ir` > 0 && `or` > 0
- *  . `sides` == 0 || `sides` > 2
- *
- * == Style Classes
- *
- *  . `silhouette`
- *  . `silhouette-donut`
+ * <h3>Constraints</h3>
+ * <ul>
+ *  <li>ir &lt;= or</li>
+ *  <li>ir &gt; 0 &amp;&amp; or &gt; 0</li>
+ *  <li>sides == 0 || sides &gt; 2</li>
+ * </ul>
+ * <h3>Style Classes</h3>
+ * <ul>
+ *  <li>silhouette</li>
+ *  <li>silhouette-donut</li>
+ * </ul>
  *
  * @author Andres Almiray
  */

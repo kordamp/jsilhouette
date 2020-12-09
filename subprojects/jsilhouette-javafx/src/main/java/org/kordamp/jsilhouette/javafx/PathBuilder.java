@@ -31,7 +31,7 @@ import java.util.List;
  * @author Andres Almiray
  */
 public class PathBuilder {
-    private List<PathElement> elements = new ArrayList<>();
+    private final List<PathElement> elements = new ArrayList<>();
 
     public PathBuilder moveTo(double x, double y) {
         elements.add(new MoveTo(x, y));

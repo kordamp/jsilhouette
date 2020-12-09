@@ -15,17 +15,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 plugins {
+    id 'java-library'
+    id 'org.jonnyzzz.java9c'
+    id 'org.javamodularity.moduleplugin'
     id 'application'
 }
 
-mainClassName = 'org.kordamp.jsilhouette.Sampler'
+mainClassName = 'org.kordamp.jsilhouette.sampler/org.kordamp.jsilhouette.sampler.Sampler'
 
 dependencies {
-    compile project(':jsilhouette-javafx')
+    implementation project(':jsilhouette-javafx')
+
+    implementation "org.openjfx:javafx-base:${javafxVersion}:${platform}"
+    implementation "org.openjfx:javafx-graphics:${javafxVersion}:${platform}"
+    implementation "org.openjfx:javafx-controls:${javafxVersion}:${platform}"
+    implementation "org.openjfx:javafx-fxml:${javafxVersion}:${platform}"
 }
 
 config {
+    artifacts {
+        source { enabled = false }
+    }
     publishing { enabled = false }
     bintray    { enabled = false }
 }

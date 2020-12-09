@@ -24,16 +24,15 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.shape.Shape;
 
 /**
- * = Lauburu
+ * Lauburu
+ * <p>
+ * Defines a <a href="http://en.wikipedia.org/wiki/Lauburu">Lauburu</a> shape.
  *
- * Defines a link:http://en.wikipedia.org/wiki/Lauburu[Lauburu] shape.
- * 
- * image::shape_lauburu.png[]
- * 
- * == Style Classes
- * 
- * . `silhouette`
- * . `silhouette-lauburu`
+ * <h3>Style Classes</h3>
+ * <ul>
+ *  <li>silhouette</li>
+ *  <li>silhouette-lauburu</li>
+ * </ul>
  *
  * @author Andres Almiray
  */

@@ -24,21 +24,20 @@ import javafx.scene.shape.Path;
 import java.util.logging.Logger;
 
 /**
- * = Arrow
- *
+ * Arrow
+ * <p>
  * Defines an arrow shape
  *
- * image::shape_arrow.png[]
- *
- * == Constraints
- *
- *  . 0 +<=+ `depth` +<=+ 1
- *  . 0 +<=+ `rise` +<=+ 1
- *
- * == Style Classes
- *
- *  . `silhouette`
- *  . `silhouette-arrow`
+ * <h3>Constraints</h3>
+ * <ul>
+ *  <li>0 &lt;= depth &lt;= 1</li>
+ *  <li>0 &lt;= rise &lt;= 1</li>
+ * </ul>
+ * <h3>Style Classes</h3>
+ * <ul>
+ *  <li>silhouette</li>
+ *  <li>silhouette-arrow</li>
+ * </ul>
  *
  * @author Andres Almiray
  */
@@ -75,6 +74,10 @@ public class Arrow extends AbstractSilhouette {
         return xProperty().get();
     }
 
+    public void setX(double value) {
+        xProperty().set(value);
+    }
+
     @SuppressWarnings("unchecked")
     public DoubleProperty xProperty() {
         if (x == null) {
@@ -84,12 +87,12 @@ public class Arrow extends AbstractSilhouette {
         return x;
     }
 
-    public void setX(double value) {
-        xProperty().set(value);
-    }
-
     public double getY() {
         return yProperty().get();
+    }
+
+    public void setY(double value) {
+        yProperty().set(value);
     }
 
     @SuppressWarnings("unchecked")
@@ -101,12 +104,12 @@ public class Arrow extends AbstractSilhouette {
         return y;
     }
 
-    public void setY(double value) {
-        yProperty().set(value);
-    }
-
     public double getHeight() {
         return heightProperty().get();
+    }
+
+    public void setHeight(double height) {
+        heightProperty().set(height);
     }
 
     @SuppressWarnings("unchecked")
@@ -118,12 +121,12 @@ public class Arrow extends AbstractSilhouette {
         return height;
     }
 
-    public void setHeight(double height) {
-        heightProperty().set(height);
-    }
-
     public double getWidth() {
         return widthProperty().get();
+    }
+
+    public void setWidth(double width) {
+        widthProperty().set(width);
     }
 
     @SuppressWarnings("unchecked")
@@ -135,12 +138,12 @@ public class Arrow extends AbstractSilhouette {
         return width;
     }
 
-    public void setWidth(double width) {
-        widthProperty().set(width);
-    }
-
     public double getDepth() {
         return depthProperty().get();
+    }
+
+    public void setDepth(double depth) {
+        depthProperty().set(depth);
     }
 
     @SuppressWarnings("unchecked")
@@ -152,12 +155,12 @@ public class Arrow extends AbstractSilhouette {
         return depth;
     }
 
-    public void setDepth(double depth) {
-        depthProperty().set(depth);
-    }
-
     public double getRise() {
         return riseProperty().get();
+    }
+
+    public void setRise(double rise) {
+        riseProperty().set(rise);
     }
 
     @SuppressWarnings("unchecked")
@@ -167,10 +170,6 @@ public class Arrow extends AbstractSilhouette {
             rise.addListener(updateListener);
         }
         return rise;
-    }
-
-    public void setRise(double rise) {
-        riseProperty().set(rise);
     }
 
     @Override

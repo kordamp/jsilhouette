@@ -15,15 +15,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 plugins {
     id 'org.kordamp.gradle.guide'
     id 'org.ajoberstar.git-publish'
 }
 
-ext.childProjects = [
-    ':jsilhouette-javafx'
-]
+evaluationDependsOn(':jsilhouette-javafx')
+evaluationDependsOn(':image-generator')
 
-childProjects.each { evaluationDependsOn it }
-evaluationDependsOn ':image-generator'
+task generateImages {
+    dependsOn project(':image-generator').tasks.run
+
+    doLast {
+        copy {
+            into file('build/guide/images')
+            from project(':image-generator').file('build/images')
+        }
+    }
+}
+
+gradle.addBuildListener(new BuildAdapter(){
+    @Override
+    void projectsEvaluated(Gradle gradle) {
+        project(':guide').tasks.createGuide.dependsOn(project(':guide').tasks.generateImages)
+        project(':guide').tasks.createGuide.dependsOn(project(':jsilhouette-javafx').tasks.javadoc)
+        project(':guide').tasks.createGuide.doLast {
+            copy {
+                into file('build/guide/api')
+                from project(':jsilhouette-javafx').tasks.javadoc.destinationDir
+            }
+        }
+    }
+})
 

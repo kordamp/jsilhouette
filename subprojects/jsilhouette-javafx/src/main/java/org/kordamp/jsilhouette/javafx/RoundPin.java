@@ -22,16 +22,15 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.shape.Path;
 
 /**
- * = RoundPin
- *
+ * RoundPin
+ * <p>
  * Defines a rounded pushpin shape.
  *
- * image::shape_roundpin.png[]
- *
- * == Style Classes
- *
- *  . `silhouette`
- *  . `silhouette-roundpin`
+ * <h3>Style Classes</h3>
+ * <ul>
+ *  <li>silhouette</li>
+ *  <li>silhouette-roundpin</li>
+ * </ul>
  *
  * @author Andres Almiray
  */

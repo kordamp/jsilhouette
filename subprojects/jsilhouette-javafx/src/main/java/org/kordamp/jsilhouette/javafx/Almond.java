@@ -25,16 +25,15 @@ import javafx.scene.shape.Shape;
 import static javafx.scene.shape.Shape.intersect;
 
 /**
- * = Almond
+ * Almond
+ * <p>
+ * Defines an almond <a href="http://en.wikipedia.org/wiki/Vesica_piscis">Vesica Piscis</a> shape
  *
- * Defines an almond link:http://en.wikipedia.org/wiki/Vesica_piscis[Vesica Piscis] shape
- *
- * image::shape_almond.png[]
- *
- * == Style Classes
- *
- *  . `silhouette`
- *  . `silhouette-almond`
+ * <h3>Style Classes</h3>
+ * <ul>
+ *  <li>silhouette</li>
+ *  <li>silhouette-almond</li>
+ * </ul>
  *
  * @author Andres Almiray
  */

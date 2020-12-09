@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.kordamp.jsilhouette;
+package org.kordamp.jsilhouette.sampler;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -101,12 +101,12 @@ public class Sampler extends Application {
         */
 
         Scene scene = new Scene(grid);
-        scene.getStylesheets().add("org/kordamp/jsilhouette/sampler.css");
+        scene.getStylesheets().add("org/kordamp/jsilhouette/sampler/sampler.css");
 
         primaryStage.setTitle("JSilhouette Sampler");
         primaryStage.setScene(scene);
-        primaryStage.setWidth(1024);
-        primaryStage.setHeight(1024);
+        primaryStage.setWidth(800);
+        primaryStage.setHeight(600);
         primaryStage.show();
     }
 

@@ -27,22 +27,21 @@ import javafx.scene.shape.Shape;
 import java.util.logging.Logger;
 
 /**
- * = Asterisk
- *
+ * Asterisk
+ * <p>
  * Defines an asterisk shape that may have round corners.
  *
- * image::shape_asterisk.png[]
- *
- * == Constraints
- *
- *  . `beamCount` > 1
- *  . 0 +<=+ `roundness` +<=+ 1
- *  . `width` +<= `radius`* 2
- *
- * == Style Classes
- *
- *  . `silhouette`
- *  . `silhouette-asterisk`
+ * <h3>Constraints</h3>
+ * <ul>
+ *  <li>beamCount &gt; 1</li>
+ *  <li>0 &lt;= roundness &lt;= 1</li>
+ *  <li>width &lt;= radius* 2</li>
+ * </ul>
+ * <h3>Style Classes</h3>
+ * <ul>
+ *  <li>silhouette</li>
+ *  <li>silhouette-asterisk</li>
+ * </ul>
  *
  * @author Andres Almiray
  */

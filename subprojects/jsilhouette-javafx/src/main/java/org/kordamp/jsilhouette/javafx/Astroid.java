@@ -22,16 +22,15 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.shape.Path;
 
 /**
- * = Astroid
+ * Astroid
+ * <p>
+ * Defines an <a href="http://en.wikipedia.org/wiki/Astroid">Astroid</a> shape.
  *
- * Defines an link:http://en.wikipedia.org/wiki/Astroid[Astroid] shape.
- *
- * image::shape_astroid.png[]
- *
- * == Style Classes
- *
- *  . `silhouette`
- *  . `silhouette-astroid`
+ * <h3>Style Classes</h3>
+ * <ul>
+ *  <li>silhouette</li>
+ *  <li>silhouette-astroid</li>
+ * </ul>
  *
  * @author Andres Almiray
  */

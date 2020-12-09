@@ -19,7 +19,7 @@ javafx.beans.property.ObjectProperty<javafx.scene.shape.Shape> shapeProperty()
 [subs="attributes"]
 .gradle
 ----
-compile '{project-group}:jsilhouette-javafx:{project-version}'
+implementation '{project-group}:jsilhouette-javafx:{project-version}'
 ----
 
 [source,xml]

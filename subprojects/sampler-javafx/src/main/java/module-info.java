@@ -15,19 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+open module org.kordamp.jsilhouette.sampler {
+    exports org.kordamp.jsilhouette.sampler;
+    requires org.kordamp.jsilhouette.javafx;
 
-plugins {
-    id 'java-library'
-    id 'org.jonnyzzz.java9c'
-    id 'org.javamodularity.moduleplugin'
-}
-
-config {
-    bintray { enabled = true }
-}
-
-dependencies {
-    compileOnly "org.openjfx:javafx-base:${javafxVersion}:${platform}"
-    compileOnly "org.openjfx:javafx-graphics:${javafxVersion}:${platform}"
-    compileOnly "org.openjfx:javafx-controls:${javafxVersion}:${platform}"
+    requires javafx.base;
+    requires javafx.graphics;
+    requires javafx.controls;
+    requires javafx.fxml;
 }

@@ -447,12 +447,18 @@ public abstract class AbstractSilhouette implements Silhouette {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) { return true; }
-            if (o == null || getClass() != o.getClass()) { return false; }
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
 
             EventHandlerRegistration<?> that = (EventHandlerRegistration<?>) o;
 
-            if (!eventType.equals(that.eventType)) { return false; }
+            if (!eventType.equals(that.eventType)) {
+                return false;
+            }
             return eventHandler.equals(that.eventHandler);
         }
 

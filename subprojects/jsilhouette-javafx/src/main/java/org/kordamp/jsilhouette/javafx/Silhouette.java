@@ -267,13 +267,14 @@ public interface Silhouette {
     }
 
     // PENDING_DOC_REVIEW
+
     /**
      * Registers an event handler to this node. The handler is called when the
      * node receives an {@code Event} of the specified type during the bubbling
      * phase of event delivery.
      *
-     * @param <T> the specific event class of the handler
-     * @param eventType the type of the events to receive by the handler
+     * @param <T>          the specific event class of the handler
+     * @param eventType    the type of the events to receive by the handler
      * @param eventHandler the handler to register
      * @throws NullPointerException if the event type or handler is null
      */
@@ -287,8 +288,8 @@ public interface Silhouette {
      * caller needs to specify the particular event type from which to
      * unregister the handler.
      *
-     * @param <T> the specific event class of the handler
-     * @param eventType the event type from which to unregister
+     * @param <T>          the specific event class of the handler
+     * @param eventType    the event type from which to unregister
      * @param eventHandler the handler to unregister
      * @throws NullPointerException if the event type or handler is null
      */
