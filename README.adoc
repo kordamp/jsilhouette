@@ -6,9 +6,8 @@
 :project-group:   org.kordamp.jsilhouette
 :project-version: 0.4.0
 
-image:https://github.com/{project-owner}/{project-name}/workflows/Build/badge.svg["Build Status", link="https://github.com/{project-owner}/{project-name}/actions"]
-image:https://api.bintray.com/packages/{project-owner}/{project-repo}/{project-name}/images/download.svg[link="https://bintray.com/{project-owner}/{project-repo}/{project-name}/_latestVersion"]
-image:https://img.shields.io/maven-central/v/{project-group}/{project-name}-javafx.svg?label=maven[link="https://search.maven.org/#search|ga|1|{project-group}"]
+image:https://img.shields.io/github/workflow/status/{project-owner}/{project-name}/EarlyAccess?logo=github["Build Status", link="https://github.com/{project-owner}/{project-name}/actions"]
+image:https://img.shields.io/maven-central/v/{project-group}/{project-name}-javafx.svg[link="https://search.maven.org/#search|ga|1|{project-group}"]
 
 ---
 
@@ -16,14 +15,14 @@ JSilhouette provides additional shapes for Java applications. Currently JavaFX i
 
 == Installing
 
-You can get the latest version of **JSilhouette** directly from link:https://bintray.com[Bintray's JCenter] repository or Maven Central.
+You can get the latest version of **JSilhouette** directly from Maven Central.
 
 [source,groovy]
 [subs="attributes"]
 .gradle
 ----
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
@@ -52,7 +51,7 @@ and usage.
 You must meet the following requirements:
 
  * JDK11 as a minimum
- * Gradle 6.3
+ * Gradle 6.8.3
 
 You may use the included gradle wrapper script if you don't have `gradle` installed.
 
@@ -70,7 +69,7 @@ You may use the included gradle wrapper script if you don't have `gradle` instal
 
  . Follow the instructions found at http://sdkman.io/ to install SDKMAN.
  . You need a POSIX environment if running Windows. We recommend using Babun Shell (http://babun.github.io/)
- . Once SDKMAN is installed invoke `sdk install gradle 6.3`.
+ . Once SDKMAN is installed invoke `sdk install gradle 6.8.3`.
  . Test your setup by invoking `gradle --version`.
 
 .Gum
