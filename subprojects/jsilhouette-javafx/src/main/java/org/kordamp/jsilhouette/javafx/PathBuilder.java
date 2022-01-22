@@ -23,6 +23,7 @@ import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.PathElement;
+import javafx.scene.shape.CubicCurveTo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,5 +68,10 @@ public class PathBuilder {
         path.getElements().add(new ClosePath());
         elements.clear();
         return path;
+    }
+
+    public PathBuilder cubicCurveTo(double x1, double y1, double x2, double y2, double ex, double ey) {
+        elements.add(new CubicCurveTo(x1,y1,x2,y2, ex,ey));
+        return this;
     }
 }
