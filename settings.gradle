@@ -26,7 +26,6 @@ pluginManagement {
         id 'org.ajoberstar.git-publish'      version gitPluginVersion
         id 'org.kordamp.gradle.guide'        version kordampPluginVersion
         id 'com.google.osdetector'           version osPluginVersion
-        id 'org.jonnyzzz.java9c'             version java9cPluginVersion
     }
 }
 

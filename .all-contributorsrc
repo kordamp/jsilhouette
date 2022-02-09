@@ -1,0 +1,13 @@
+{
+  "projectName": "jsilhouette",
+  "projectOwner": "kordamp",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "CONTRIBUTORS.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "none",
+  "contributors": []
+}

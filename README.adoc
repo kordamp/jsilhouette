@@ -51,7 +51,7 @@ and usage.
 You must meet the following requirements:
 
  * JDK11 as a minimum
- * Gradle 6.8.3
+ * Gradle 6.9.1
 
 You may use the included gradle wrapper script if you don't have `gradle` installed.
 
@@ -82,10 +82,6 @@ to use the gradle wrapper if available or your global gradle command. This is an
 === Next Steps
 
 Make a full build issuing `gm build`.
-
-=== Contributing
-
-If you are interested in fixing issues and contributing directly to the code base, please contact us!
 
 === License
 
