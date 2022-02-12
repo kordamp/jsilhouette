@@ -19,9 +19,7 @@ package org.kordamp.jsilhouette.javafx;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.geometry.Point2D;
 import javafx.scene.shape.Path;
-
 import java.util.logging.Logger;
 
 /**

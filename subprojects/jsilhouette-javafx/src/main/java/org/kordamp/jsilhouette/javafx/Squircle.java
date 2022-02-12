@@ -18,7 +18,6 @@
 package org.kordamp.jsilhouette.javafx;
 
 import javafx.beans.property.DoubleProperty;
-
 import java.util.logging.Logger;
 
 /**
