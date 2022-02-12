@@ -75,8 +75,7 @@ public class BezierRectangle extends AbstractCenteredSilhouette {
     private DoubleProperty bf8_x,bf8_y;
 
     protected Path path;
-    public BezierRectangle() {
-    }
+    public BezierRectangle() {}
     public BezierRectangle(double cx, double cy, double w, double h,double rw, double rh,
                            double bf){
         this(cx,cy,w,h,rw,rh,
@@ -125,13 +124,13 @@ public class BezierRectangle extends AbstractCenteredSilhouette {
         calculateShape();
     }
 
-    /**Width**/
+    /*Width*/
     public double getWidth() {
-        return wProperty().get();
+        return widthProperty().get();
     }
 
     @SuppressWarnings("unchecked")
-    public DoubleProperty wProperty() {
+    public DoubleProperty widthProperty() {
         if (w == null) {
             w = new SimpleDoubleProperty(this, "w", 0);
             w.addListener(updateListener);
@@ -140,16 +139,16 @@ public class BezierRectangle extends AbstractCenteredSilhouette {
     }
 
     public void setWidth(double w) {
-        wProperty().set(w);
+        widthProperty().set(w);
     }
 
-    /**Height**/
+    /*Height*/
     public double getHeight() {
-        return hProperty().get();
+        return heightProperty().get();
     }
 
     @SuppressWarnings("unchecked")
-    public DoubleProperty hProperty() {
+    public DoubleProperty heightProperty() {
         if (h == null) {
             h = new SimpleDoubleProperty(this, "h", 0);
             h.addListener(updateListener);
@@ -158,10 +157,10 @@ public class BezierRectangle extends AbstractCenteredSilhouette {
     }
 
     public void setHeight(double h) {
-        hProperty().set(h);
+        heightProperty().set(h);
     }
 
-    /**RectangleWidth**/
+    /*RectangleWidth*/
     public double getRectangleWidth() {
         return rwProperty().get();
     }
@@ -180,7 +179,7 @@ public class BezierRectangle extends AbstractCenteredSilhouette {
     }
 
 
-    /**RectangleHeight**/
+    /*RectangleHeight*/
     public double getRectangleHeight() {
         return rhProperty().get();
     }
@@ -198,7 +197,7 @@ public class BezierRectangle extends AbstractCenteredSilhouette {
         rhProperty().set(rh);
     }
 
-    /**BezierFactor1**/
+    /*BezierFactor1*/
     public double getBezierFactor1_x() {
         return bf1_xProperty().get();
     }
@@ -233,7 +232,7 @@ public class BezierRectangle extends AbstractCenteredSilhouette {
         bf1_yProperty().set(bf1_y);
     }
 
-    /**BezierFactor2**/
+    /*BezierFactor2*/
     public double getBezierFactor2_x() {
         return bf2_xProperty().get();
     }
@@ -268,7 +267,7 @@ public class BezierRectangle extends AbstractCenteredSilhouette {
         bf2_yProperty().set(bf2_y);
     }
 
-    /**BezierFactor3**/
+    /*BezierFactor3*/
     public double getBezierFactor3_x() {
         return bf3_xProperty().get();
     }
@@ -303,7 +302,7 @@ public class BezierRectangle extends AbstractCenteredSilhouette {
         bf3_yProperty().set(bf3_y);
     }
 
-    /**BezierFactor4**/
+    /*BezierFactor4*/
     public double getBezierFactor4_x() {
         return bf4_xProperty().get();
     }
@@ -338,7 +337,7 @@ public class BezierRectangle extends AbstractCenteredSilhouette {
         bf4_yProperty().set(bf4_y);
     }
 
-    /**BezierFactor5**/
+    /*BezierFactor5*/
     public double getBezierFactor5_x() {
         return bf5_xProperty().get();
     }
@@ -373,7 +372,7 @@ public class BezierRectangle extends AbstractCenteredSilhouette {
         bf5_yProperty().set(bf5_y);
     }
 
-    /**BezierFactor6**/
+    /*BezierFactor6*/
     public double getBezierFactor6_x() {
         return bf6_xProperty().get();
     }
@@ -408,7 +407,7 @@ public class BezierRectangle extends AbstractCenteredSilhouette {
         bf6_yProperty().set(bf6_y);
     }
 
-    /**BezierFactor7**/
+    /*BezierFactor7*/
     public double getBezierFactor7_x() {
         return bf7_xProperty().get();
     }
@@ -443,7 +442,7 @@ public class BezierRectangle extends AbstractCenteredSilhouette {
         bf7_yProperty().set(bf7_y);
     }
 
-    /**BezierFactor8**/
+    /*BezierFactor8*/
     public double getBezierFactor8_x() {
         return bf8_xProperty().get();
     }
