@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2015-2021 Burkhard Mayer
+ * Copyright 2015-2022 Andres Almiray
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,6 @@
 package org.kordamp.jsilhouette.javafx;
 
 import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.scene.shape.Path;
 
 import java.util.logging.Logger;
 
