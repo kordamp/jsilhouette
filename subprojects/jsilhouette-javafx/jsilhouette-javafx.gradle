@@ -17,7 +17,6 @@
  */
 plugins {
     id 'java-library'
-    id 'org.jonnyzzz.java9c'
     id 'org.javamodularity.moduleplugin'
 }
 

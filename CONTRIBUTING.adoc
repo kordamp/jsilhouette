@@ -1,0 +1,37 @@
+= Contributing
+
+Anyone is welcome to open link:https://github.com/kordamp/jsilhouette/issues[issues] and/or pull-requests for bugfixes,
+feature-requests and/or ideas. If unsure where to start we encourage you to open a
+link:https://github.com/kordamp/jsilhouette/discussions[discussion] topic first.
+
+== Code of Conduct
+
+This project and everyone participating in it is governed by our link:CODE_OF_CONDUCT.md[Code of Conduct].
+By participating, you are expected to uphold this code. Please report unacceptable behavior to info@kordamp.org.
+
+== Contributor License Agreement
+
+Contributions to JSilhouette are protected by a link:CLA.adoc[CLA]. Please read the document before making a contribution.
+You'll be asked to digitally sign the document on your first contribution. Feel free to open a
+link:https://github.com/kordamp/jsilhouette/discussions[discussion] topic if you have questions.
+
+== How to build
+
+.Prerequisites
+Java 11.
+
+1. `git clone https://github.com/kordamp/jsilhouette.git`
+2. `cd jsilhouette`
+3. `./gradlew build`
+
+TIP: You maye use link:https://github.com/kordamp/gm[] instead in which case the commands are shorter, for example
+`./gradlew publishToMavenLocal` becomes `gm install`.
+
+=== Git Commit Messages
+
+ * Use the present tense ("Add feature" not "Added feature")
+ * Use the imperative mood ("Move cursor to..." not "Moves cursor to...")
+ * Reference issues and pull requests liberally after the first line
+ * When only changing documentation, include [ci skip] in the commit title
+ * If fixing a bug, append "Fixes #<n>" to the first line
+ * If fixing a feature, append "Resolves #<n>" to the first line
