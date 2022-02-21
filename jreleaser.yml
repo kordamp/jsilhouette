@@ -26,6 +26,8 @@ project:
   authors:
     - Andres Almiray
   license: Apache-2.0
+  extraProperties:
+    inceptionYear: 2015
 
 release:
   github:
@@ -34,7 +36,23 @@ release:
     changelog:
       formatted: ALWAYS
       preset: conventional-commits
-      change: '- {{commitShortHash}} {{commitTitle}}'
+      format: '- {{commitShortHash}} {{commitTitle}}'
+      contributors:
+        format: '- {{contributorName}}{{#contributorUsernameAsLink}} ({{.}}){{/contributorUsernameAsLink}}'
+      labelers:
+        - label: 'allcontributors'
+          title: 'docs: update'
+      categories:
+        - title: 'allcontributors'
+          labels:
+            - 'allcontributors'
+      hide:
+        categories:
+          - 'merge'
+          - 'allcontributors'
+        contributors:
+          - 'GitHub'
+          - 'allcontributors'
 
 announce:
   twitter:
