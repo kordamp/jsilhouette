@@ -18,6 +18,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "thejeed",
+      "name": "David Weber",
+      "avatar_url": "https://avatars.githubusercontent.com/u/49395096?v=4",
+      "profile": "https://github.com/thejeed",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "skipCi": true,
