@@ -33,32 +33,8 @@ release:
     overwrite: true
     changelog:
       formatted: ALWAYS
+      preset: conventional-commits
       change: '- {{commitShortHash}} {{commitTitle}}'
-      labelers:
-        - label: 'feature'
-          title: 'Resolves #'
-          body: 'Resolves #'
-        - label: 'issue'
-          title: 'Fixes #'
-          body: 'Fixes #'
-        - label: 'issue'
-          title: 'Relates to #'
-          body: 'Relates to #'
-        - label: 'task'
-          title: '[chore]'
-      categories:
-        - title: '🚀 Features'
-          labels:
-            - 'feature'
-        - title: '✅ Issues'
-          labels:
-            - 'issue'
-        - title: '🧰 Tasks'
-          labels:
-            - 'task'
-      replacers:
-        - search: '\[chore\] '
-          replace: ''
 
 announce:
   twitter:

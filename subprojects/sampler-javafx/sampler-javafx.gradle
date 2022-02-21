@@ -17,11 +17,17 @@
  */
 plugins {
     id 'java-library'
-    id 'org.javamodularity.moduleplugin'
     id 'application'
 }
 
-mainClassName = 'org.kordamp.jsilhouette.sampler/org.kordamp.jsilhouette.sampler.Sampler'
+java {
+    modularity.inferModulePath = true
+}
+
+application {
+    mainModule = 'org.kordamp.jsilhouette.sampler'
+    mainClass = 'org.kordamp.jsilhouette.sampler.Sampler'
+}
 
 dependencies {
     implementation project(':jsilhouette-javafx')

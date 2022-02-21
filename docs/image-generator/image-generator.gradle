@@ -17,11 +17,17 @@
  */
 plugins {
     id 'java-library'
-    id 'org.javamodularity.moduleplugin'
     id 'application'
 }
 
-mainClassName = 'org.kordamp.jsilhouette.generator/org.kordamp.jsilhouette.generator.Generator'
+java {
+    modularity.inferModulePath = true
+}
+
+application {
+    mainModule = 'org.kordamp.jsilhouette.generator'
+    mainClass = 'org.kordamp.jsilhouette.generator.Generator'
+}
 
 dependencies {
     compile project(':jsilhouette-javafx')

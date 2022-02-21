@@ -22,10 +22,9 @@ pluginManagement {
         mavenLocal()
     }
     plugins {
-        id 'org.javamodularity.moduleplugin' version modularityPluginVersion
-        id 'org.ajoberstar.git-publish'      version gitPluginVersion
-        id 'org.kordamp.gradle.guide'        version kordampPluginVersion
-        id 'com.google.osdetector'           version osPluginVersion
+        id 'org.ajoberstar.git-publish' version gitPluginVersion
+        id 'org.kordamp.gradle.guide'   version kordampPluginVersion
+        id 'com.google.osdetector'      version osPluginVersion
     }
 }
 
