@@ -40,19 +40,24 @@ release:
       contributors:
         format: '- {{contributorName}}{{#contributorUsernameAsLink}} ({{.}}){{/contributorUsernameAsLink}}'
       labelers:
-        - label: 'allcontributors'
+        - label: allcontributors
           title: 'docs: update'
+          order: -1
+        - label: revert
+          title: regex:^(?:reverts(?:\(.*\))?!?):\s.*
+          order: -2
       categories:
-        - title: 'allcontributors'
+        - title: allcontributors
+          order: 55
           labels:
-            - 'allcontributors'
+            - allcontributors
       hide:
         categories:
           - 'merge'
-          - 'allcontributors'
+          - allcontributors
         contributors:
           - 'GitHub'
-          - 'allcontributors'
+          - allcontributors
 
 announce:
   twitter:
