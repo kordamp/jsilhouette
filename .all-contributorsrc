@@ -27,6 +27,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "buggmayer",
+      "name": "buggmayer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/81083720?v=4",
+      "profile": "https://github.com/buggmayer",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "skipCi": true,
