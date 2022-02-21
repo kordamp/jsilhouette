@@ -18,7 +18,7 @@
 
 project:
   name: jsilhouette
-  description: 'BootstrapFX: Additional shapes for JavaFX applications'
+  description: JSilhouette provides additional shapes for Java applications
   longDescription: |
     JSilhouette provides additional shapes for Java applications. Currently JavaFX is supported.
 
