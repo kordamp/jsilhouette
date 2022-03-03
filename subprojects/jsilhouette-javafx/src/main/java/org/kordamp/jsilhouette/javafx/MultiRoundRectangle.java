@@ -312,22 +312,22 @@ public class MultiRoundRectangle extends AbstractSilhouette {
         double brh = getBottomRightHeight();
 
         if (blw + brw > w) {
-            LOG.info("bottom rounding factors are invalid: " + blw + " + " + brw + " > " + w);
+            LOG.finest("bottom rounding factors are invalid: " + blw + " + " + brw + " > " + w);
             blw = brw = 0;
         }
 
         if (tlh + blh > h) {
-            LOG.info("left rounding factors are invalid: " + tlh + " + " + blh + " > " + h);
+            LOG.finest("left rounding factors are invalid: " + tlh + " + " + blh + " > " + h);
             tlh = blh = 0;
         }
 
         if (trh + brh > h) {
-            LOG.info("right rounding factors are invalid: " + trh + " + " + brh + " > " + h);
+            LOG.finest("right rounding factors are invalid: " + trh + " + " + brh + " > " + h);
             trh = brh = 0;
         }
 
         if (tlw + trw > w) {
-            LOG.info("top rounding factors are invalid: " + tlw + " + " + trw + " > " + w);
+            LOG.finest("top rounding factors are invalid: " + tlw + " + " + trw + " > " + w);
             tlw = trw = 0;
         }
 
